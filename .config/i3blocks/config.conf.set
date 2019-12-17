@@ -1,0 +1,85 @@
+command=~/.config/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=pango
+
+#[record]
+#command=cat /tmp/recordingicon
+#interval=once
+#signal=9
+
+#[music]
+#label=🎼
+#interval=once
+#signal=11
+#command=bash ~/.config/i3blocks/music
+
+#[news]
+#label=📰
+#interval=once
+#signal=6
+#command=bash ~/.config/i3blocks/news
+
+#[iplocate]
+#interval=30
+#command=bash ~/.config/i3blocks/iplocate
+
+[pacpackages]
+label=📦
+interval=once
+signal=8
+command=bash ~/.config/i3blocks/pacpackages
+
+#[torrent]
+#interval=20
+#signal=7
+#command=bash ~/.config/i3blocks/torrent
+
+[weather]
+interval=18000
+signal=5
+command=bash ~/.config/i3blocks/weather
+
+[mailbox]
+label=📬
+interval=180
+signal=12
+command=bash ~/.config/i3blocks/mailbox
+
+[memory]
+interval=10
+label=🧠
+command=bash ~/.config/i3blocks/memory
+
+[cpu]
+interval=5
+label=💻
+command=bash ~/.config/i3blocks/cpu
+
+#[volume]
+#interval=once
+#signal=10
+#command=bash ~/.config/i3blocks/volume
+
+[disk]
+interval=60
+command=bash ~/.config/i3blocks/disk /
+
+#[disk]
+#interval=60
+#command=bash ~/.config/i3blocks/disk /home 🏠
+
+[battery]
+interval=30
+command=bash ~/.config/i3blocks/battery BAT0
+
+[clock]
+label=📅
+interval=30
+command=bash ~/.config/i3blocks/clock
+
+[internet]
+interval=10
+command=bash ~/.config/i3blocks/internet
+
+#[help]
+#interval=once
