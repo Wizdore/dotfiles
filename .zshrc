@@ -161,6 +161,7 @@ bindkey -s '^o' 'lfcd\n'  # zsh
 alias v="nvim"
 alias nb="newsboat"
 alias nm="neomutt"
+alias dk="docker"
 alias s="sudo"
 
 # alias for dotfiles repository 
