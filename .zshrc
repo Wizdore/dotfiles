@@ -159,6 +159,7 @@ bindkey -s '^o' 'lfcd\n'  # zsh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias v="nvim"
+alias running_services="systemctl --type=service --state=running"
 alias nb="newsboat"
 alias nm="neomutt"
 alias dk="docker"
