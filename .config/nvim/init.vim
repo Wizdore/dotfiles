@@ -9,7 +9,7 @@ Plug 'bling/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-repeat'

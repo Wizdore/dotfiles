@@ -1,0 +1,73 @@
+[options]
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = Sauce Code Pro Nerd Font Complete Mono 16
+scrollback_lines = 10000
+search_wrap = true
+#icon_name = terminal
+#geometry = 640x480
+
+# "system", "on" or "off"
+cursor_blink = system
+
+# "block", "underline" or "ibeam"
+cursor_shape = ibeam
+
+# $BROWSER is used by default if set, with xdg-open as a fallback
+#browser = xdg-open
+
+# set size hints for the window
+#size_hints = false
+
+# Hide links that are no longer valid in url select overlay mode
+filter_unmatched_urls = true
+
+# emit escape sequences for extra modified keys
+#modify_other_keys = false
+
+# Muse color Scheme From terminal.sexy
+[colors]
+
+# special
+foreground      = #ffffff
+foreground_bold = #ffffff
+cursor          = #ffffff
+background = rgba(0, 0, 0, 0.85)
+
+# black
+color0  = #2e3436
+color8  = #555753
+
+# red
+color1  = #a31604
+color9  = #c60001
+
+# green
+color2  = #447241
+color10 = #27a343
+
+# yellow
+color3  = #c1951a
+color11 = #d5a30e
+
+# blue
+color4  = #425387
+color12 = #4a5a8d
+
+# magenta
+color5  = #965d98
+color13 = #893c8c
+
+# cyan
+color6  = #06989a
+color14 = #12bccb
+
+# white
+color7  = #d3d7cf
+color15 = #eeeeec

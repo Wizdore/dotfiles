@@ -117,6 +117,8 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
+
 #Environment variable for GoLang
 export GOBIN=/home/wizdore/go/bin
 export GOPATH=/home/wizdore/go
@@ -159,6 +161,7 @@ bindkey -s '^o' 'lfcd\n'  # zsh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias v="nvim"
+alias activate="source venv/bin/activate"
 alias running_services="systemctl --type=service --state=running"
 alias nb="newsboat"
 alias nm="neomutt"
@@ -174,3 +177,5 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

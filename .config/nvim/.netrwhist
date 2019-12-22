@@ -1,11 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =9
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/wizdore/Downloads/gits/st'
+let g:netrw_dirhist_3='/home/wizdore/Work/go'
+let g:netrw_dirhist_2='/home/wizdore/Desktop'
+let g:netrw_dirhist_1='/home/wizdore/Work/python/flask_blog'
+let g:netrw_dirhist_0='/home/wizdore/Work/python/flask_blog/.vim'
 let g:netrw_dirhist_9='/home/wizdore/Downloads/gits/st'
 let g:netrw_dirhist_8='/home/wizdore/.config/i3blocks'
 let g:netrw_dirhist_7='/home/wizdore/.config/nvim'
 let g:netrw_dirhist_6='/home/wizdore/.config'
 let g:netrw_dirhist_5='/home/wizdore/.config/i3blocks'
-let g:netrw_dirhist_4='/etc/fonts/conf.avail'
-let g:netrw_dirhist_3='/home/wizdore/.config/mpv'
-let g:netrw_dirhist_2='/home/wizdore/Desktop'
-let g:netrw_dirhist_1='/home/wizdore/snap/telegram-cli/25/.telegram-cli'
