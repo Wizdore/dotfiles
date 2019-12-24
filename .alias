@@ -1,0 +1,11 @@
+
+alias v="nvim"
+alias activate="source venv/bin/activate"
+alias running_services="systemctl --type=service --state=running"
+alias nb="newsboat"
+alias nm="neomutt"
+alias dk="docker"
+alias s="sudo"
+
+# alias for dotfiles repository 
+alias dgit='/usr/bin/git --git-dir=$HOME/Downloads/gits/dotfiles --work-tree=$HOME'

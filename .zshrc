@@ -112,21 +112,6 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
-export KEYTIMEOUT=1
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-
-export FZF_DEFAULT_COMMAND='rg --files --hidden'
-
-#Environment variable for GoLang
-export GOBIN=/home/wizdore/go/bin
-export GOPATH=/home/wizdore/go
-
-export PATH=$PATH:$GOBIN
-
-#Environment variable for RTV to change the browser
-export RTV_BROWSER=qutebrowser
 # Use beam shape cursor on startup.
 echo -ne '\e[1 q'
 # Use beam shape cursor for each new prompt.
@@ -160,16 +145,9 @@ bindkey -s '^o' 'lfcd\n'  # zsh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias v="nvim"
-alias activate="source venv/bin/activate"
-alias running_services="systemctl --type=service --state=running"
-alias nb="newsboat"
-alias nm="neomutt"
-alias dk="docker"
-alias s="sudo"
 
-# alias for dotfiles repository 
-alias dgit='/usr/bin/git --git-dir=$HOME/Downloads/gits/dotfiles --work-tree=$HOME'
+source ~/.alias
+
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 

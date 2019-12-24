@@ -69,8 +69,8 @@ bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+bindsym Print exec --no-startup-id "scrot -q 60 -o ~/Pictures/screenshots/latest.png; curl -F 'file=@/home/wizdore/Pictures/screenshots/latest.png' 'http://0x0.st' | xclip -se c; exec notify-send 'Screenshot url in clipboard'"
+bindsym $mod+Print --release exec --no-startup-id scrot -d 3 ~/Pictures/screenshots/latest.png
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Ctrl+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
