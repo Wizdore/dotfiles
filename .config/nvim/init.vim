@@ -1,27 +1,35 @@
-let mapleader=","
-:set number relativenumber
+let mapleader=" "
+set number relativenumber
 
-" Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
-
-" Declare the list of plugins.
 Plug 'bling/vim-airline'
 Plug 'ryanoasis/vim-devicons'
-Plug 'mhinz/vim-startify'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-" List ends here. Plugins become visible to Vim after this call.
+Plug 'mhinz/vim-startify'
+Plug 'machakann/vim-sandwich'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-vinegar'
+Plug 'jeetsukumaran/vim-indentwise'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'yorickpeterse/happy_hacking.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
+
+color happy_hacking
+
+set tabstop=2
+set shiftwidth=2
+set scrolloff=5
+
+let g:netrw_preview   = 1
+let g:netrw_liststyle = 3
+let g:netrw_winsize   = 30
 
 " Key mappings
 nnoremap <C-p> :Files<Cr>
-noremap <silent> <C-S>          :update<CR>
-vnoremap <silent> <C-S>         <C-C>:update<CR>
-inoremap <silent> <C-S>         <C-O>:update<CR>
+nmap <Leader>w :w<CR>
+nmap <Leader>q :q<CR>
 
 :augroup numbertoggle
 :  autocmd!
@@ -35,7 +43,8 @@ syntax enable
 filetype plugin on
 
 
-" Coc basic conf
+" Coc settings
+"
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -164,3 +173,4 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" Coc settings end

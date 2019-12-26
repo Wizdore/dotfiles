@@ -30,7 +30,7 @@ font xft:FiraCode-Regular 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+q kill
@@ -46,7 +46,7 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ################################################################################################
 
 exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+bindsym $mod+Ctrl+m exec kitty -e 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
@@ -58,14 +58,14 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+Escape exec terminal -e 'systemctl hibernate'
-bindsym $mod+F2 exec google-chrome-stable
+bindsym $mod+Ctrl+b exec kitty -e 'bmenu'
+bindsym $mod+Escape exec kitty -e 'systemctl hibernate'
+bindsym $mod+s exec google-chrome-stable
 # bindsym $mod+F3 exec pcmanfm
 bindsym $mod+F3 exec nnn
 bindsym $mod+F4 exec "i3-msg 'workspace $ws2'; exec code -n" 
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
-bindsym $mod+F5 exec terminal -e 'mocp'
+bindsym $mod+F5 exec kitty -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
@@ -288,26 +288,21 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
-exec --no-startup-id i3-msg 'workspace 1:১; exec termite'
+exec --no-startup-id i3-msg 'workspace 1:১; exec kitty'
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xbanish &
 exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
 exec --no-startup-id redshift -l 58.964432:5.726250
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
-# exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
-# exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
-# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id ibus-daemon -drx
-#exec --no-startup-id wal -R
+
+
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
 # https://i3wm.org/docs/userguide.html#xresources

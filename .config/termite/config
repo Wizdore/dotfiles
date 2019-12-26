@@ -17,7 +17,7 @@ search_wrap = true
 cursor_blink = system
 
 # "block", "underline" or "ibeam"
-cursor_shape = ibeam
+cursor_shape = block
 
 # $BROWSER is used by default if set, with xdg-open as a fallback
 #browser = xdg-open
@@ -31,43 +31,31 @@ filter_unmatched_urls = true
 # emit escape sequences for extra modified keys
 #modify_other_keys = false
 
-# Muse color Scheme From terminal.sexy
+# Nord color theme from a random git repo 
 [colors]
+cursor = #ffffff
+cursor_foreground = #000000
 
-# special
-foreground      = #ffffff
-foreground_bold = #ffffff
-cursor          = #525252
+foreground = #d8dee9
+foreground_bold = #d8dee9
+#background = #2e3440
 background = rgba(0, 0, 0, 0.9)
 
-# black
-color0  = #2e3436
-color8  = #555753
+highlight = #4c566a
 
-# red
-color1  = #a31604
-color9  = #c60001
-
-# green
-color2  = #447241
-color10 = #27a343
-
-# yellow
-color3  = #c1951a
-color11 = #d5a30e
-
-# blue
-color4  = #425387
-color12 = #4a5a8d
-
-# magenta
-color5  = #965d98
-color13 = #893c8c
-
-# cyan
-color6  = #06989a
-color14 = #12bccb
-
-# white
-color7  = #d3d7cf
-color15 = #eeeeec
+color0  = #3b4252
+color1  = #bf616a
+color2  = #a3be8c
+color3  = #ebcb8b
+color4  = #81a1c1
+color5  = #b48ead
+color6  = #88c0d0
+color7  = #e5e9f0
+color8  = #4c566a
+color9  = #bf616a
+color10 = #a3be8c
+color11 = #ebcb8b
+color12 = #81a1c1
+color13 = #b48ead
+color14 = #8fbcbb
+color15 = #eceff4

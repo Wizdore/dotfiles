@@ -146,6 +146,7 @@ bindkey -s '^o' 'lfcd\n'  # zsh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source ~/.profile
 source ~/.alias
 
 # Load zsh-syntax-highlighting; should be last.
