@@ -290,17 +290,17 @@ bindsym $mod+9 exec --no-startup-id blurlock
 # Autostart applications
 exec --no-startup-id i3-msg 'workspace 1:১; exec kitty'
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
-exec --no-startup-id xbanish &
+#exec --no-startup-id xbanish &
 exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id pamac-tray
 exec --no-startup-id redshift -l 58.964432:5.726250
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
-exec --no-startup-id ibus-daemon -drx
+# exec_always --no-startup-id ff-theme-util
+# exec_always --no-startup-id fix_xcursor
+# exec --no-startup-id ibus-daemon -drx
 
 
 # Color palette used for the terminal ( ~/.Xresources file )
