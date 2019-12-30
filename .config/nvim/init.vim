@@ -3,7 +3,6 @@ set number relativenumber
 
 call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
-Plug 'ryanoasis/vim-devicons'
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-startify'
@@ -12,11 +11,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'yorickpeterse/happy_hacking.vim'
+Plug 'ayu-theme/ayu-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-color happy_hacking
+set termguicolors
+let ayucolor="dark"   "'light', 'mirage' or 'dark' 
+colorscheme ayu
 
 set tabstop=2
 set shiftwidth=2
@@ -28,8 +29,7 @@ let g:netrw_winsize   = 30
 
 " Key mappings
 nnoremap <C-p> :Files<Cr>
-nmap <Leader>w :w<CR>
-nmap <Leader>q :q<CR>
+nmap <Leader>w :wq<CR>
 
 :augroup numbertoggle
 :  autocmd!
