@@ -60,9 +60,8 @@ bindsym $mod+Ctrl+m exec kitty -e 'alsamixer'
 # Start Applications
 bindsym $mod+Ctrl+b exec kitty -e 'bmenu'
 bindsym $mod+Escape exec kitty -e 'systemctl hibernate'
-bindsym $mod+b exec google-chrome-stable
+bindsym $mod+b exec --no-startup-id google-chrome-stable
 # bindsym $mod+F3 exec pcmanfm
-bindsym $mod+F3 exec nnn
 bindsym $mod+F4 exec "i3-msg 'workspace $ws2'; exec code -n" 
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec kitty -e 'mocp'
@@ -340,6 +339,12 @@ bar {
 	status_command i3blocks -c ~/.config/i3blocks/config.conf
 	position top
         strip_workspace_numbers yes
+
+    colors {
+        background #1a1e24
+        statusline #F9FAF9
+        separator  #454947
+    }
 }
 
 #bar {
@@ -359,7 +364,7 @@ bar {
 #	strip_workspace_numbers no
 
 #    colors {
-#        background #000000
+#        background #282D36
 #        statusline #F9FAF9
 #        separator  #454947
 #

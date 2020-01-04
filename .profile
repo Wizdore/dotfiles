@@ -9,9 +9,10 @@ alias nb="newsboat"
 alias nm="neomutt"
 alias dk="docker"
 alias s="sudo"
+alias neofetch='neofetch --ascii_distro Arch_old --disable memory theme icons --ascii_bold on'
 
 # Better alternative of less
-alias les='vim -u /usr/share/vim/vim81/macros/less.vim'
+alias les='vim -u /usr/share/vim/vim82/macros/less.vim'
 
 
 # alias for dotfiles repository 
