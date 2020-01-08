@@ -29,7 +29,7 @@ let g:netrw_winsize   = 30
 
 " Key mappings
 nnoremap <C-p> :Files<Cr>
-nmap <Leader>w :wq<CR>
+nmap <Leader>w :w<CR>
 
 :augroup numbertoggle
 :  autocmd!

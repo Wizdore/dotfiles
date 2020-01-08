@@ -246,7 +246,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym l exec --no-startup-id i3exit slock, mode "default"
     bindsym s exec --no-startup-id i3exit suspend, mode "default"
     bindsym u exec --no-startup-id i3exit switch_user, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
@@ -284,7 +284,7 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
+bindsym $mod+9 exec slock
 
 # Autostart applications
 exec --no-startup-id i3-msg 'workspace 1:১; exec kitty'
@@ -334,8 +334,9 @@ set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 
+
 bar {
-	font pango:DejaVu Sans Mono for Powerline 12
+	font pango:DejaVu Sans Mono for Powerline 10
 	status_command i3blocks -c ~/.config/i3blocks/config.conf
 	position top
         strip_workspace_numbers yes

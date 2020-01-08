@@ -9,7 +9,7 @@ alias nb="newsboat"
 alias nm="neomutt"
 alias dk="docker"
 alias s="sudo"
-alias neofetch='neofetch --ascii_distro Arch_old --disable memory theme icons --ascii_bold on'
+alias neofetch='neofetch --disable memory theme icons --ascii_bold on'
 
 # Better alternative of less
 alias les='vim -u /usr/share/vim/vim82/macros/less.vim'
@@ -20,7 +20,8 @@ alias dgit="/usr/bin/git --git-dir=$HOME/Downloads/gits/dotfiles --work-tree=$HO
 
 alias update="sudo pacman -Syyu"
 alias tb="nc termbin.com 9999 | xclip -se c"
-alias l="exa -Fa --group-directories-first"
+alias l="lsd -la"
+alias ls="lsd"
 
 #########################
 ##    env variables    ##
@@ -49,3 +50,5 @@ export PATH=$PATH:$GOBIN
 
 #Environment variable for RTV to change the browser
 export RTV_BROWSER=qutebrowserexport
+
+export PATH="$HOME/.cargo/bin:$PATH"
