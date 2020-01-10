@@ -1,0 +1,4 @@
+set shellopts '-eu'
+set scrolloff 10
+set color256
+set icons

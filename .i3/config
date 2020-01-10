@@ -45,7 +45,7 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id volumeicon
+# exec --no-startup-id volumeicon
 bindsym $mod+Ctrl+m exec kitty -e 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
@@ -59,10 +59,10 @@ bindsym $mod+Ctrl+m exec kitty -e 'alsamixer'
 
 # Start Applications
 bindsym $mod+Ctrl+b exec kitty -e 'bmenu'
-bindsym $mod+Escape exec kitty -e 'systemctl hibernate'
+# bindsym $mod+Escape exec kitty -e 'systemctl hibernate'
 bindsym $mod+b exec --no-startup-id google-chrome-stable
 # bindsym $mod+F3 exec pcmanfm
-bindsym $mod+F4 exec "i3-msg 'workspace $ws2'; exec code -n" 
+# bindsym $mod+F4 exec "i3-msg 'workspace $ws2'; exec code -n" 
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec kitty -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
@@ -146,14 +146,14 @@ bindsym $mod+Ctrl+Left workspace prev
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
 # Color emojis
-#set $ws1 1:1️
-#set $ws2 2:2️
-#set $ws3 3:3️
-#set $ws4 4:4️
-#set $ws5 5:5️
-#set $ws6 6:6️
-#set $ws7 7:7️
-#set $ws8 8:8️
+# set $ws1 1:1️
+# set $ws2 2:2️
+# set $ws3 3:3️
+# set $ws4 4:4️
+# set $ws5 5:5️
+# set $ws6 6:6️
+# set $ws7 7:7️
+# set $ws8 8:8️
 
 set $ws1 1:১
 set $ws2 2:২
@@ -210,16 +210,11 @@ for_window [class="fpakman"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
 for_window [title="i3_help"] floating enable sticky enable border normal
-for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Manjaro-hello"] floating enable
-for_window [class="Manjaro Settings Manager"] floating enable border normal
 for_window [title="MuseScore: Play Panel"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
-for_window [title="About Pale Moon"] floating enable
-for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
@@ -284,23 +279,16 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec slock
+# bindsym $mod+9 exec slock
 
 # Autostart applications
-exec --no-startup-id i3-msg 'workspace 1:১; exec kitty'
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec --no-startup-id i3-msg 'workspace 1:১; exec kitty'
+# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id nm-applet
-#exec --no-startup-id xbanish &
-exec --no-startup-id xfce4-power-manager
-# exec --no-startup-id pamac-tray
+# exec --no-startup-id nm-applet
+# exec --no-startup-id xfce4-power-manager
 exec --no-startup-id redshift -l 58.964432:5.726250
 # exec --no-startup-id blueman-applet
-# exec_always --no-startup-id sbxkb
-# exec_always --no-startup-id ff-theme-util
-# exec_always --no-startup-id fix_xcursor
-# exec --no-startup-id ibus-daemon -drx
-
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
