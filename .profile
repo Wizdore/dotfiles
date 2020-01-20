@@ -20,7 +20,7 @@ alias dgit="/usr/bin/git --git-dir=$HOME/Downloads/gits/dotfiles --work-tree=$HO
 
 alias update="sudo pacman -Syyu"
 alias tb="nc termbin.com 9999 | xclip -se c"
-alias l="lsd -la"
+alias l="lsd -a"
 alias ls="lsd"
 
 #########################
@@ -31,6 +31,8 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export EDITOR=/usr/bin/nvim
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
+# For fixing the overlapping character prompt in zsh
+export LC_CTYPE=en_US.UTF-8
 # fix "xdg-open fork-bomb" export your preferred browser from here
 export BROWSER=/usr/bin/w3m
 

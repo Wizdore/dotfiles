@@ -1,5 +1,3 @@
-# i3 config file (v4)
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
@@ -54,15 +52,15 @@ bindsym $mod+Ctrl+m exec kitty -e 'alsamixer'
 ################################################################################################
 
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 5; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && pkill -RTMIN+22 i3blocks
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && pkill -RTMIN+22 i3blocks
 
+# Volume Controls
 bindsym XF86AudioRaiseVolume exec amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks 
 bindsym XF86AudioLowerVolume exec amixer set 'Master' 5%- && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec amixer set 'Master' toggle && pkill -RTMIN+10 i3blocks
 
 # Start Applications
-bindsym $mod+Ctrl+b exec kitty -e 'bmenu'
 # bindsym $mod+Escape exec kitty -e 'systemctl hibernate'
 bindsym $mod+b exec --no-startup-id google-chrome-stable
 # bindsym $mod+F3 exec pcmanfm
@@ -74,11 +72,9 @@ bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id "scrot -q 60 -o ~/Pictures/screenshots/latest.png; curl -F 'file=@/home/wizdore/Pictures/screenshots/latest.png' 'http://0x0.st' | xclip -se c; exec notify-send 'Screenshot url in clipboard'"
 bindsym $mod+Print --release exec --no-startup-id scrot -d 3 ~/Pictures/screenshots/latest.png
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Ctrl+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
-# focus_follows_mouse no
+focus_follows_mouse no
 
 # change focus
 bindsym $mod+h focus left
@@ -86,23 +82,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
@@ -159,14 +143,14 @@ bindsym $mod+Ctrl+Left workspace prev
 # set $ws7 7:7️
 # set $ws8 8:8️
 
-set $ws1 1:১
-set $ws2 2:২
-set $ws3 3:৩
-set $ws4 4:৪
-set $ws5 5:৫
-set $ws6 6:৬
-set $ws7 7:৭
-set $ws8 8:৮
+set $ws1 1:
+set $ws2 2:
+set $ws3 3:
+set $ws4 4:
+set $ws5 5:
+set $ws6 6:6
+set $ws7 7:7
+set $ws8 8:8
 
 
 # switch to workspace
@@ -328,7 +312,7 @@ set_from_resource $term_color15    color15
 
 
 bar {
-	font pango:DejaVu Sans Mono for Powerline 10
+	font pango:JetBrains Mono ExtraBold 11
 	status_command i3blocks -c ~/.config/i3blocks/config.conf
 	position top
         strip_workspace_numbers yes

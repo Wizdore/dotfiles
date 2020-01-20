@@ -21,7 +21,7 @@ colorscheme ayu
 
 set tabstop=2
 set shiftwidth=2
-set scrolloff=5
+set scrolloff=10
 
 let g:netrw_preview   = 1
 let g:netrw_liststyle = 3
