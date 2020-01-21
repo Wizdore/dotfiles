@@ -273,6 +273,7 @@ mode "resize" {
 # exec --no-startup-id i3-msg 'workspace 1:১; exec kitty'
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore
+exec --no-startup-id xbanish &
 # exec --no-startup-id nm-applet
 # exec --no-startup-id xfce4-power-manager
 exec --no-startup-id redshift -l 58.964432:5.726250

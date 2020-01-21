@@ -5,6 +5,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'mhinz/vim-startify'
 Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-commentary'
@@ -31,18 +33,47 @@ let g:netrw_winsize   = 30
 " Key mappings
 nnoremap <C-p> :Files<Cr>
 nmap <Leader>w :w<CR>
+nnoremap <Leader>gg :Goyo<CR>
 
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-:augroup END
+" :augroup numbertoggle
+" :  autocmd!
+" :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+" :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+" :augroup END
 
 highlight LineNr ctermbg=233
 set nocompatible
 syntax enable
 filetype plugin on
 
+
+"Goyo settings
+
+let g:goyo_width = 80
+let g:goyo_height = 90
+
+function! s:goyo_enter()
+  set scrolloff=999
+	set noshowcmd
+	set cmdheight=1
+	set noshowmode
+	set nonumber norelativenumber
+  Limelight
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  set scrolloff=10
+	set showcmd
+	set cmdheight=2
+	set showmode
+	set number relativenumber
+  Limelight!
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Coc settings
 "
