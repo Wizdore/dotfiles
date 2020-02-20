@@ -71,7 +71,7 @@ bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id "scrot -q 60 -o ~/Pictures/screenshots/latest.png; curl -F 'file=@/home/wizdore/Pictures/screenshots/latest.png' 'http://0x0.st' | xclip -se c; exec notify-send 'Screenshot url in clipboard'"
-bindsym $mod+Print --release exec --no-startup-id scrot -d 3 ~/Pictures/screenshots/latest.png
+bindsym $mod+Print --release exec --no-startup-id flameshot gui -p ~/Pictures/screenshots/
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 focus_follows_mouse no
