@@ -56,8 +56,8 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && pkill -RTMIN+22 i3blocks
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && pkill -RTMIN+22 i3blocks
 
 # Volume Controls
-bindsym XF86AudioRaiseVolume exec amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks 
-bindsym XF86AudioLowerVolume exec amixer set 'Master' 5%- && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec pactl -- set-sink-volume 0 +10% && pkill -RTMIN+10 i3blocks 
+bindsym XF86AudioLowerVolume exec pactl -- set-sink-volume 0 -10% && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec amixer set 'Master' toggle && pkill -RTMIN+10 i3blocks
 
 # Start Applications
@@ -274,6 +274,7 @@ mode "resize" {
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xbanish &
+exec --no-startup-id ibus-daemon -drx
 # exec --no-startup-id nm-applet
 # exec --no-startup-id xfce4-power-manager
 exec --no-startup-id redshift -l 58.964432:5.726250
