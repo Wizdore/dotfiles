@@ -1,9 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
-
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -11,8 +6,9 @@
     ];
 
 
-  # Bootloader.
+  # The Latest Mainline Linux Kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot = {
@@ -50,28 +46,36 @@
   };
 
   services.blueman.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${pkgs.hyprland}/share/wayland-sessions";
+        user = "greeter";
+      };
+    };
+  };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "";
-    xkb.options = "caps:swapescape";
+  # this is a life saver.
+  # literally no documentation about this anywhere.
+  # might be good to write about this...
+  # https://www.reddit.com/r/NixOS/comments/u0cdpi/tuigreet_with_xmonad_how/
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Without this errors will spam on screen
+    # Without these bootlogs will spam on screen
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
   };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Configure pipewire, moving from pulse
   security.rtkit.enable = true;
-
-  # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
@@ -82,28 +86,18 @@
     jack.enable = true;
   };
 
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Defining my user account
   users.users.wizdore = {
     isNormalUser = true;
     description = "Shaon";
     extraGroups = [ "networkmanager" "wheel" "audio" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
+  # Configuring Git
   programs.git = {
     enable = true;
     package = pkgs.git;
-    
+
     config = {
       user = {
         name = "Wizdore";
@@ -113,24 +107,38 @@
     };
   };
 
+  # Install firefox.
+  programs.firefox.enable = true;
+
   # Make Zsh default
   programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
+  # Steam <3
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
-  
-  users.defaultUserShell = pkgs.zsh;
 
   # Hyprland
   programs.hyprland.enable = true;
-  
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
+    # Defining My Desktop
+    wofi
+    waybar
+    hyprpaper
+    hyprlock
+    mako
+    wl-clipboard
+    clipse
+    networkmanagerapplet
+
     neovim
     curl
     wget
@@ -139,19 +147,11 @@
     unrar
     unzip
 
-    wofi
-    waybar
-
     python312
     uv
     nodejs_22
-    networkmanagerapplet
     alsa-ucm-conf
     alsa-utils
-
-    hyprpaper
-    hyprlock
-    mako
 
     usbutils
     ripgrep
@@ -159,8 +159,6 @@
     ungoogled-chromium
     tridactyl-native
     yazi
-    wl-clipboard
-    clipse
     rsync
     nwg-displays
     entr
@@ -182,7 +180,7 @@
     pavucontrol
   ];
 
- 
+
   environment.variables.EDITOR = "nvim";
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -202,19 +200,17 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
-  # List services that you want to enable:
-  
-   services.fprintd = {
+  services.fprintd = {
     enable = true;
   };
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -229,6 +225,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
 

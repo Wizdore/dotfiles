@@ -14,7 +14,7 @@
   "modules-right": [
     "custom/bus_times",
     "custom/sep",
-    "upower",
+    "battery",
     "custom/sep",
     "temperature",
     "custom/sep",
@@ -46,6 +46,18 @@
     "rotate": 90,
     "interval": 30,
   },
+  "battery": {
+	"bat": "BAT0",
+  "rotate": 90,
+	"interval": 60,
+	"states": {
+		"warning": 30,
+		"critical": 15
+	},
+	"format": "{icon}   {capacity}",
+	"format-icons": ["", "", "", "", ""],
+	"max-length": 25
+},
   "upower": {
     "rotate": 90,
     "format": " {}",
