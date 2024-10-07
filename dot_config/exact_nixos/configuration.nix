@@ -160,6 +160,7 @@
     tridactyl-native
     yazi
     rsync
+    magic-wormhole
     nwg-displays
     entr
     brightnessctl
