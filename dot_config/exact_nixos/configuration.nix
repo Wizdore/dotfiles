@@ -159,6 +159,8 @@
     ungoogled-chromium
     tridactyl-native
     yazi
+    wl-clipboard
+    clipse
     rsync
     nwg-displays
     entr
