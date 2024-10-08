@@ -1,5 +1,4 @@
-The dotfiles are managed by chezmoi
-
+Most of the dotfiles are chezmoi, except the nixos configs. Im seperaing those out to $HOME/.config/nixos. After applying chezmoi from these repo those needs to be rsynced to /etc/nixos. This setup would then cover both the Home configs and System configs.
 
 # Chezmoi Cheatsheet
 
