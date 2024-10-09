@@ -112,6 +112,11 @@ alias l='eza -a'
 alias ll='eza -la'
 alias c='clear'
 alias v='nvim'
+alias cz='chezmoi'
+alias cza='chezmoi add'
+alias cze='chezmoi edit'
+alias czd='chezmoi diff'
+alias czu='chezmoi update'
 
 # Shell integrations
 eval "$(fzf --zsh)"

@@ -1,0 +1,11 @@
+
+NVIM v0.10.2
+Build type: Release
+LuaJIT 2.1.1713773202
+
+   system vimrc file: "$VIM/sysinit.vim"
+  fall-back for $VIM: "
+/nix/store/5naiah725fbag1swvy7v8r6xqbwwni7w-neovim-unwrapped-0.10.2/share/nvim
+"
+
+Run :checkhealth for more info
