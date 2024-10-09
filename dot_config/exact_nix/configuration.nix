@@ -113,6 +113,10 @@
     entr
     brightnessctl
 
+    delta
+    difftastic
+    diff-so-fancy
+
     cargo
     go
     bat
