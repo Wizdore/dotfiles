@@ -19,6 +19,7 @@
   boot = {
     kernelModules = [ "snd_hda_intel" ];
   };
+
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
@@ -64,8 +65,8 @@
   # Steam <3
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    remotePlay.openFirewall = true; 
+    dedicatedServer.openFirewall = true; 
   };
 
   # Hyprland
@@ -103,9 +104,12 @@
     usbutils
     ripgrep
 
+    evtest
+
     ungoogled-chromium
     tridactyl-native
     yazi
+    qbittorrent-nox
     nh
     rsync
     magic-wormhole
