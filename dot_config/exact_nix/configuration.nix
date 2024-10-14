@@ -116,6 +116,8 @@
     ungoogled-chromium
     tridactyl-native
     yazi
+    starship
+    atuin
     wineWowPackages.stable
     winetricks
     bottles
