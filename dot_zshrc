@@ -1,15 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-if [[ -f "/opt/homebrew/bin/brew" ]] then
-  # If you're using macOS, you'll want this enabled
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -23,38 +11,20 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in zsh plugins
+zinit ice wait lucid
 zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
 
-# Add in snippets
+zinit ice wait lucid turbo
+zinit light marlonrichert/zsh-autocomplete
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 
-# Load Atuin
+zinit ice wait lucid turbo
+zinit light jeffreytse/zsh-vi-mode
+
+zinit ice wait lucid turbo
 zinit load atuinsh/atuin
-
-# Load completions
-autoload -Uz compinit && compinit
-
-zinit cdreplay -q
-
-# Keybindings
-bindkey -e
-
-# Yazi function to change folder
-function yazi-opener() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
-
-zle -N yazi-opener-widget yazi-opener
-bindkey '^[w' yazi-opener-widget
 
 # Define sesh-sessions function if not already defined
 function sesh-sessions() {
@@ -71,10 +41,14 @@ function sesh-sessions() {
 # Create a zsh widget to call sesh-sessions
 zle -N sesh-sessions-widget sesh-sessions
 
-# Bind Alt+s (^[s) to sesh-sessions-widget
+
+# All the keybindings
+bindkey -v
+bindkey -r '^R'
+bindkey '^R' _atuin_search_widget
+bindkey -M vicmd '^R' _atuin_search_widget
+bindkey -M viins '^R' _atuin_search_widget
 bindkey '^[s' sesh-sessions-widget
-
-
 
 # History
 HISTSIZE=5000
