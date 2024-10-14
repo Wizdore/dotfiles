@@ -15,6 +15,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.kernelParams = [ "fsync=1" ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot = {
     kernelModules = [ "snd_hda_intel" ];
@@ -26,6 +27,12 @@
   services.blueman.enable = true;
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+
+   programs.dconf.enable = true;
+
+  services.xserver.videoDrivers = [ "modesetting" ];  # For Intel integrated graphics
+
 
   # Defining my user account
   users.users.wizdore = {
@@ -109,6 +116,9 @@
     ungoogled-chromium
     tridactyl-native
     yazi
+    wineWowPackages.stable
+    winetricks
+    bottles
     qbittorrent-nox
     nh
     rsync
