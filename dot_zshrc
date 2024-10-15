@@ -26,6 +26,18 @@ zinit light jeffreytse/zsh-vi-mode
 zinit ice wait lucid turbo
 zinit load atuinsh/atuin
 
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+
+# Create a zsh widget to call yazi
+zle -N yazi-widget y
+
 # Define sesh-sessions function if not already defined
 function sesh-sessions() {
   {
@@ -49,6 +61,7 @@ bindkey '^R' _atuin_search_widget
 bindkey -M vicmd '^R' _atuin_search_widget
 bindkey -M viins '^R' _atuin_search_widget
 bindkey '^[s' sesh-sessions-widget
+bindkey '^[w' yazi-widget
 
 # History
 HISTSIZE=5000
