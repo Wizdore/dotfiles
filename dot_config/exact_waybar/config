@@ -1,14 +1,9 @@
 {
   "layer": "top",
-  "position": "left",
-  "width": 28,
-  "margin": "2 0 2 2",
-  "spacing": 2,
+  "position": "top",
+  "margin": "0 0 0 0",
+  "spacing": 8,
   "modules-left": [
-    "clock",
-    "custom/sep",
-    "tray",
-    "custom/sep",
     "hyprland/workspaces"
   ],
   "modules-right": [
@@ -18,12 +13,18 @@
     "custom/sep",
     "temperature",
     "custom/sep",
-    "pulseaudio"
-//    "custom/powermenu"
+    "cpu",
+    "custom/sep",
+    "memory",
+    "custom/sep",
+    "pulseaudio",
+    "custom/sep",
+    "clock",
+    "custom/sep",
+    "tray",
   ],
   "custom/sep": {
-    "format": "──"
-    // "format": ""
+    "format": "|"
   },
   "custom/powermenu": {
     "on-click": "~/.config/wofi/scripts/wofipowermenu.py",
@@ -35,49 +36,55 @@
     "return-type": "json",
     "format": "{}",
     "justify": "center",
-    "rotate": 90,
     "interval": 5,
     "on-click": "blueman-manager"
   },
   "custom/bus_times": {
     "exec": "$HOME/Work/Go/BusTimes/BusTimes 46258",
+    "exec-if": "[[ $(iwgetid -r) == 'XS4BYOD' ]]",
     "format": "  {}",
     "justify": "center",
-    "rotate": 90,
     "interval": 30,
   },
+  "cpu": {
+    "interval": 10,
+    "format": "  {max_frequency}%",
+  },
   "battery": {
-	"bat": "BAT0",
-  "rotate": 90,
-	"interval": 60,
-	"states": {
-		"warning": 30,
-		"critical": 15
-	},
-	"format": "{icon}   {capacity}",
-	"format-icons": ["", "", "", "", ""],
-	"max-length": 25
-},
+    "bat": "BAT0",
+    "interval": 10,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}  {capacity}",
+    "format-icons": ["", "", "", "", ""],
+    "format-charging": "  {capacity}",
+  },
+  "memory": {
+      "interval": 30,
+      "format": "  {used:0.1f}G"
+  },
   "upower": {
-    "rotate": 90,
     "format": " {}",
     "show-icon": false,
     "native-path": "BAT0",
   },
   "hyprland/workspaces": {
-    "format": "{id}",
-    "on-click": "activate",
-    "on-scroll-up": "hyprctl dispatch workspace e-1",
-    "on-scroll-down": "hyprctl dispatch workspace e+1",
-    "format-icons": {
-      "active": "",
-      "urgent": "",
-      "default": ""
-    }
+  "format": "  <sup>{icon} </sup>{windows}",
+  "format-window-separator": " ",
+  "window-rewrite-default": "?",
+  "window-rewrite": {
+      "title<.*youtube.*>": " ", 
+      "title<.*Microsoft Teams.*>": " ", 
+      "class<firefox>": " ", 
+      "class<firefox> title<.*github.*>": " ", 
+      "kitty": " ", 
+    },
   },
   "clock": {
     "tooltip": true,
-    "format": "{:%m\n%d\n0%w\n──\n%H\n%M}",
+    "format": "{:%a %e %b, %R}",
     "tooltip-format": "{:%Y-%b-%d}",
   },
   "tray": {
@@ -85,10 +92,9 @@
     "show-passive-items": "true"
   },
   "temperature": {
-    "rotate": 90,
     "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
     "critical-threshold": 80,
-    "format": "{icon} {temperatureC}°C",
+    "format": "{icon}  {temperatureC}°C",
     "format-icons": [
       "",
       "",
@@ -96,8 +102,7 @@
     ]
   },
   "pulseaudio": {
-    "rotate": 90,
-    "format": "{icon} {volume}%",
+    "format": "{icon}  {volume}%",
     "format-bluetooth": "{icon} {volume}%",
     "format-muted": "MUTE ",
     "format-icons": {

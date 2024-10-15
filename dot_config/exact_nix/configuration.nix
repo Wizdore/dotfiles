@@ -116,6 +116,7 @@
     ungoogled-chromium
     tridactyl-native
     yazi
+    wirelesstools
     starship
     atuin
     wineWowPackages.stable
