@@ -4,7 +4,9 @@
   "margin": "0 0 0 0",
   "spacing": 8,
   "modules-left": [
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "custom/sep",
+    "hyprland/window",
   ],
   "modules-right": [
     "custom/bus_times",
@@ -81,6 +83,15 @@
       "class<firefox> title<.*github.*>": " ", 
       "kitty": " ", 
     },
+  },
+  "hyprland/window": {
+	"format": "{}",
+  "icon": true,
+  "icon-size": 18,
+	"rewrite": {
+      "(.*) - Mozilla Firefox": "🌎 $1",
+      "(.*) - zsh": "> [$1]"
+    }
   },
   "clock": {
     "tooltip": true,

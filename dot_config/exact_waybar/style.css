@@ -37,10 +37,10 @@ tooltip * {
 #tray {
 }
 #workspaces {
-  border-radius: 4px;
+  border-radius: 0px;
 }
 #workspaces button {
-  color: #5b6078;
+  color: #a9adc4;
   background: none;
   padding: 0;
 }
@@ -48,7 +48,7 @@ tooltip * {
   color: #a6da95;
 }
 #workspaces button.active {
-  color: #f5bde6;
+  color: #f9bdea;
 }
 #temperature {
 }
