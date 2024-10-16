@@ -90,6 +90,7 @@
       font-awesome
       symbola
       material-icons
+      cozette
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
   };

@@ -17,6 +17,7 @@
     clipse
     networkmanagerapplet
     btop
+    fastfetch
     jq
 
     neovim
