@@ -8,6 +8,7 @@
       ./modules/locale.nix
       ./modules/greeter.nix
       ./modules/power-policy.nix
+      ./modules/system-packages.nix
     ];
 
 
@@ -28,11 +29,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-
-   programs.dconf.enable = true;
+  programs.dconf.enable = true;
 
   services.xserver.videoDrivers = [ "modesetting" ];  # For Intel integrated graphics
-
 
   # Defining my user account
   users.users.wizdore = {
@@ -79,77 +78,7 @@
   # Hyprland
   programs.hyprland.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  environment.systemPackages = with pkgs; [
-    # Defining My Desktop
-    wofi
-    waybar
-    hyprpaper
-    hyprlock
-    mako
-    wl-clipboard
-    clipse
-    networkmanagerapplet
-
-    neovim
-    curl
-    wget
-    gcc
-    zig
-    unrar
-    unzip
-
-    python312
-    uv
-    nodejs_22
-    alsa-ucm-conf
-    alsa-utils
-
-    usbutils
-    ripgrep
-
-    evtest
-
-    ungoogled-chromium
-    tridactyl-native
-    yazi
-    wirelesstools
-    starship
-    atuin
-    wineWowPackages.stable
-    winetricks
-    bottles
-    qbittorrent-nox
-    nh
-    rsync
-    magic-wormhole
-    nwg-displays
-    entr
-    brightnessctl
-
-    delta
-    difftastic
-    diff-so-fancy
-
-    cargo
-    go
-    bat
-    eza
-    fzf
-    tmux
-    sesh
-    kitty
-    chezmoi
-    zsh
-    psmisc
-
-    zoxide
-    pavucontrol
-  ];
-
 
   environment.variables.EDITOR = "nvim";
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -166,7 +95,6 @@
   };
 
 
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -181,12 +109,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

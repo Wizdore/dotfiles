@@ -14,7 +14,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit ice wait lucid
 zinit light zsh-users/zsh-syntax-highlighting
 
-zinit ice wait lucid turbo
+zinit ice wait lucid
 zinit light marlonrichert/zsh-autocomplete
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
@@ -23,7 +23,7 @@ zinit snippet OMZP::command-not-found
 zinit ice wait lucid turbo
 zinit light jeffreytse/zsh-vi-mode
 
-zinit ice wait lucid turbo
+zinit ice wait lucid
 zinit load atuinsh/atuin
 
 function y() {
