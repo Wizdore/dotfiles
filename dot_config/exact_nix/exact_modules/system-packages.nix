@@ -19,6 +19,7 @@
     btop
     fastfetch
     jq
+    hyperfine
 
     neovim
     curl

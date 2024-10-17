@@ -24,6 +24,10 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+  hardware.ipu6 = {
+    enable = true;
+    platform = "ipu6ep";
+  };
 
   services.blueman.enable = true;
   # Enable CUPS to print documents.
@@ -38,6 +42,11 @@
     isNormalUser = true;
     description = "Shaon";
     extraGroups = [ "networkmanager" "wheel" "audio" ];
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
 
   # Configuring Git
