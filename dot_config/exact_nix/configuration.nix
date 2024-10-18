@@ -24,10 +24,6 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  hardware.ipu6 = {
-    enable = true;
-    platform = "ipu6ep";
-  };
 
   services.blueman.enable = true;
   # Enable CUPS to print documents.
