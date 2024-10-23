@@ -21,6 +21,8 @@
     jq
     hyperfine
 
+    bibata-cursors
+
     neovim
     curl
     wget

@@ -90,7 +90,11 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   environment.variables.EDITOR = "nvim";
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    XCURSOR_THEME = "Bibata-Modern-Amber"; # Bibata-Modern-{Ice,Classic} for {white, Dark} version
+    XCURSOR_SIZE = "24";
+  };
 
   fonts = {
     packages = with pkgs; [
