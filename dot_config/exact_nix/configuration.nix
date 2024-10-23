@@ -29,6 +29,10 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # For enabling external mounting
+  services.udisks2.enable = true;
+  services.udev.packages = [ pkgs.udisks2 ];
+
   programs.dconf.enable = true;
 
   services.xserver.videoDrivers = [ "modesetting" ];  # For Intel integrated graphics
@@ -91,7 +95,7 @@
   fonts = {
     packages = with pkgs; [
       noto-fonts-emoji
-      noto-fonts-cjk
+      noto-fonts-cjk-sans 
       font-awesome
       symbola
       material-icons

@@ -75,5 +75,9 @@
 
     zoxide
     pavucontrol
+
+    udiskie
+    imv
+    simple-mtpfs
   ];
 }
