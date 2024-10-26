@@ -5,7 +5,6 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    # Defining My Desktop
     wofi
     waybar
     hyprpaper
@@ -22,6 +21,7 @@
     hyperfine
 
     bibata-cursors
+    mpv-unwrapped
 
     neovim
     curl

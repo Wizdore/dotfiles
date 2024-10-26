@@ -20,8 +20,8 @@ zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 
-zinit ice wait lucid turbo
 zinit light jeffreytse/zsh-vi-mode
+ZVM_VI_ESCAPE_BINDKEY='jk'
 
 zinit ice wait lucid
 zinit load atuinsh/atuin
@@ -53,13 +53,16 @@ function sesh-sessions() {
 # Create a zsh widget to call sesh-sessions
 zle -N sesh-sessions-widget sesh-sessions
 
+eval "$(atuin init zsh)"
 
-# All the keybindings
-bindkey -v
-bindkey -r '^R'
-bindkey '^R' _atuin_search_widget
-bindkey -M vicmd '^R' _atuin_search_widget
-bindkey -M viins '^R' _atuin_search_widget
+# Ensure Ctrl+R works with the vi mode plugin
+ZVM_INIT_MODE=sourcing  # This helps with plugin compatibility
+function zvm_after_init() {
+    # Bind Ctrl+R after vi-mode initializes
+    bindkey '^R' _atuin_search_widget
+}
+
+# Other Bindings
 bindkey '^[s' sesh-sessions-widget
 bindkey '^[w' yazi-widget
 
