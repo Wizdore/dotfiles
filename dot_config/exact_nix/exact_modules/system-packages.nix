@@ -5,6 +5,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    devbox
     wofi
     waybar
     hyprpaper
@@ -26,14 +27,9 @@
     neovim
     curl
     wget
-    gcc
-    zig
     unrar
     unzip
 
-    python312
-    uv
-    nodejs_22
     alsa-ucm-conf
     alsa-utils
 
@@ -48,9 +44,6 @@
     wirelesstools
     starship
     atuin
-    wineWowPackages.stable
-    winetricks
-    bottles
     qbittorrent-nox
     nh
     rsync
@@ -63,10 +56,11 @@
     difftastic
     diff-so-fancy
 
-    cargo
-    go
     bat
     eza
+    dust
+    powertop
+    tldr
     fzf
     tmux
     sesh
