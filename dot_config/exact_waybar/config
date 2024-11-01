@@ -42,7 +42,7 @@
     "on-click": "blueman-manager"
   },
   "custom/bus_times": {
-    "exec": "$HOME/Work/Go/BusTimes/BusTimes 46258",
+    "exec": "$HOME/Scripts/BusTimes/BusTimes 46258",
     "exec-if": "[[ $(iwgetid -r) == 'XS4BYOD' ]]",
     "format": "  {}",
     "justify": "center",
