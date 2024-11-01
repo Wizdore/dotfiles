@@ -62,6 +62,11 @@ function zvm_after_init() {
     bindkey '^R' _atuin_search_widget
 }
 
+
+# Get the dynamic linker path
+export NIX_LD=$(cat $(nix eval --raw nixpkgs#stdenv.cc)/nix-support/dynamic-linker)
+export NIX_LD_DEBUG=1
+
 # Other Bindings
 bindkey '^[s' sesh-sessions-widget
 bindkey '^[w' yazi-widget

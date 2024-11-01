@@ -5,6 +5,9 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    lua-language-server
+    nodejs
+    python313
     devbox
     wofi
     waybar

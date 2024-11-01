@@ -18,7 +18,12 @@ return {
         -- 'eslint_d', -- ts/js linter
         -- 'shfmt', -- Shell formatter
         -- 'checkmake', -- linter for Makefiles
-        -- 'ruff', -- Python linter and formatter
+        'ruff', -- Python linter and formatter
+        'black',
+        'mypy',
+        'debugpy',
+        'ruff-lsp',
+        'pyright',
         -- 'rustfmt', -- Python linter and formatter
         'gofmt',
       },
@@ -27,6 +32,7 @@ return {
 
     local sources = {
       diagnostics.checkmake,
+      diagnostics.mypy,
       formatting.prettier.with { filetypes = { 'html', 'json', 'yaml', 'markdown' } },
       formatting.stylua,
       formatting.shfmt.with { args = { '-i', '4' } },

@@ -154,7 +154,7 @@ return {
     local servers = {
     --   clangd = {},
     --   gopls = {},
-    --   pyright = {},
+      basedpyright = {},
     --   rust_analyzer = {},
     --   ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
     --
@@ -162,7 +162,7 @@ return {
     --      https://github.com/pmizio/typescript-tools.nvim
     --
     --   But for many setups, the LSP (`tsserver`) will work just fine
-    --   ruff = {},
+      ruff = {},
     --   pylsp = {
     --     settings = {
     --       pylsp = {
@@ -186,32 +186,32 @@ return {
     --   sqlls = {},
     --   terraformls = {},
       jsonls = {},
-    --   yamlls = {},
+      yamlls = {},
     --
-    --   lua_ls = {
-    --     -- cmd = {...},
-    --     -- filetypes = { ...},
-    --     -- capabilities = {},
-    --     settings = {
-    --       Lua = {
-    --         completion = {
-    --           callSnippet = 'Replace',
-    --         },
-    --         runtime = { version = 'LuaJIT' },
-    --         workspace = {
-    --           checkThirdParty = false,
-    --           library = {
-    --             '${3rd}/luv/library',
-    --             unpack(vim.api.nvim_get_runtime_file('', true)),
-    --           },
-    --         },
-    --         diagnostics = { disable = { 'missing-fields' } },
-    --         format = {
-    --           enable = false,
-    --         },
-    --       },
-    --     },
-    --   },
+      -- lua_ls = {
+      --   -- cmd = {...},
+      --   -- filetypes = { ...},
+      --   -- capabilities = {},
+      --   settings = {
+      --     Lua = {
+      --       completion = {
+      --         callSnippet = 'Replace',
+      --       },
+      --       runtime = { version = 'LuaJIT' },
+      --       workspace = {
+      --         checkThirdParty = false,
+      --         library = {
+      --           '${3rd}/luv/library',
+      --           unpack(vim.api.nvim_get_runtime_file('', true)),
+      --         },
+      --       },
+      --       diagnostics = { disable = { 'missing-fields' } },
+      --       format = {
+      --         enable = false,
+      --       },
+      --     },
+      --   },
+      -- },
     }
 
     -- Ensure the servers and tools above are installed

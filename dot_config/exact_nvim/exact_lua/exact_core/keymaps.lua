@@ -72,5 +72,17 @@ vim.keymap.set('v', 'p', '"_dP', opts)
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- Debugging
+-- local dap = require "dap"
+-- vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)
+-- vim.keymap.set('n', '<leader>df', dap.run_to_cursor)
+-- vim.keymap.set('n', '<leader>dc', dap.continue)
+-- vim.keymap.set('n', '<leader>dr', dap.restart)
+-- vim.keymap.set('n', '<leader>dsi', dap.step_into)
+-- vim.keymap.set('n', '<leader>dso', dap.step_out)
+--
+-- vim.keymap.set('n', '<leader>dv', function()
+--   require("dapui").eval(nil, { enter = true })
+-- end)
