@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.4/.schema/devbox.schema.json",
+  "packages": [
+    "go@1.23.2"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo 'Build with `devbox run build` to get BusTimes Binary'"
+    ],
+    "scripts": {
+      "build": [
+        "go build -ldflags=\"-w -s -extldflags '-static' -buildid=\" -tags \"netgo osusergo static_build\" -trimpath -gcflags=all=\"-l -B\" -o BusTimes hello.go"
+      ]
+    }
+  }
+}
