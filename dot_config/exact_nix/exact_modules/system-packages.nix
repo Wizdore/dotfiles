@@ -5,6 +5,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    nwg-look
     bitwarden-cli
     lua-language-server
     nodejs

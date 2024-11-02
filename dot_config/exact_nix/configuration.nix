@@ -19,8 +19,12 @@
   boot.kernelParams = [ "fsync=1" ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot = {
-    kernelModules = [ "snd_hda_intel" ];
+    kernelModules = [ "snd_hda_intel" "fuse" ];
   };
+
+  
+  # Required for AppImages
+  security.wrappers.fusermount.source = "${pkgs.fuse}/bin/fusermount";
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;

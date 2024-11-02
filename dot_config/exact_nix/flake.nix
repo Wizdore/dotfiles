@@ -17,7 +17,14 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
+          
+        # Main Config
         ./configuration.nix
+
+        # My custom flakes
+        ./flakes/upnote.nix
+
+        # should be in the ./flakes/ dir, but fine for now
         auto-cpufreq.nixosModules.default
       ];
     };
