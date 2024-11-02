@@ -16,9 +16,11 @@ zinit light zsh-users/zsh-syntax-highlighting
 
 zinit ice wait lucid
 zinit light marlonrichert/zsh-autocomplete
-zinit snippet OMZP::git
-zinit snippet OMZP::sudo
-zinit snippet OMZP::command-not-found
+
+zinit wait lucid for \
+  OMZP::git \
+  OMZP::sudo \
+  OMZP::command-not-found
 
 zinit light jeffreytse/zsh-vi-mode
 ZVM_VI_ESCAPE_BINDKEY='jk'
@@ -96,6 +98,8 @@ alias cza='chezmoi add'
 alias cze='chezmoi edit'
 alias czd='chezmoi diff'
 alias czu='chezmoi update -v'
+alias bwu='export BW_SESSION=$(bw unlock --raw)'
+alias bwl='bw lock'
 
 
 export DOTNET_ASPIRE_CONTAINER_RUNTIME=podman

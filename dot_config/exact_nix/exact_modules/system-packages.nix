@@ -5,6 +5,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    bitwarden-cli
     lua-language-server
     nodejs
     python313
