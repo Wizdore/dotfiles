@@ -5,7 +5,20 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    bluetui
+    impala
+    haskellPackages.patat
+    
+    # System Detective
+    binsider
+    netscanner
+    termshark
+    btop
+
     nwg-look
+    nwg-displays
+
+    catppuccin-gtk
     bitwarden-cli
     lua-language-server
     nodejs
@@ -21,7 +34,6 @@
     wl-clipboard
     clipse
     networkmanagerapplet
-    btop
     fastfetch
     jq
     hyperfine
@@ -53,7 +65,6 @@
     nh
     rsync
     magic-wormhole
-    nwg-displays
     entr
     brightnessctl
 
