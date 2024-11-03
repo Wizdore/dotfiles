@@ -17,49 +17,6 @@ return {
     end,
   },
   {
-    'rcarriga/nvim-dap-ui',
-    dependencies = 'mfussenegger/nvim-dap',
-    config = function()
-      local dap = require 'dap'
-      local dapui = require 'dapui'
-      dapui.setup()
-    end,
-  },
-  {
-    'mfussenegger/nvim-dap',
-    dependencies = {
-      'rcarriga/nvim-dap-ui',
-      'nvim-neotest/nvim-nio',
-    },
-    config = function()
-      local dap = require 'dap'
-      local dapui = require 'dapui'
-
-      vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)
-      vim.keymap.set('n', '<leader>df', dap.run_to_cursor)
-      vim.keymap.set('n', '<leader>dc', dap.continue)
-      vim.keymap.set('n', '<leader>dr', dap.restart)
-      vim.keymap.set('n', '<leader>dsi', dap.step_into)
-      vim.keymap.set('n', '<leader>dso', dap.step_out)
-      vim.keymap.set('n', '<leader>dui', dapui.toggle)
-
-      vim.keymap.set('n', '<leader>dv', function()
-        require('dapui').eval(nil, { enter = true })
-      end)
-    end,
-  },
-  {
-    'mfussenegger/nvim-dap-python',
-    ft = 'python',
-    dependencies = {
-      'mfussenegger/nvim-dap',
-    },
-    config = function(_, opts)
-      local path = '~/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
-      require('dap-python').setup(path)
-    end,
-  },
-  {
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
   },

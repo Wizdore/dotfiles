@@ -1,5 +1,5 @@
-require 'core.options' -- Load general options
-require 'core.keymaps' -- Load general keymaps
+require 'core.options'  -- Load general options
+require 'core.keymaps'  -- Load general keymaps
 require 'core.snippets' -- Custom code snippets
 
 -- Set up the Lazy plugin manager
@@ -22,6 +22,7 @@ require('lazy').setup {
   require 'plugins.treesitter',
   require 'plugins.telescope',
   require 'plugins.lsp',
+  require 'plugins.dap',
   require 'plugins.autocompletion',
   require 'plugins.none-ls',
   require 'plugins.gitsigns',
@@ -30,7 +31,7 @@ require('lazy').setup {
   require 'plugins.misc',
   require 'plugins.comment',
   require 'plugins.flash',
-  require 'plugins.overseer'
+  require 'plugins.overseer',
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
