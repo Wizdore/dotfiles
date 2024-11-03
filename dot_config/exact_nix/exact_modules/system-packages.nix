@@ -5,6 +5,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    nix-prefetch-github
     bluetui
     impala
     haskellPackages.patat

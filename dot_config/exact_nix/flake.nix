@@ -23,6 +23,7 @@
 
         # My custom flakes
         ./flakes/upnote.nix
+        # ./flakes/termfu.nix # Its still WIP
 
         # should be in the ./flakes/ dir, but fine for now
         auto-cpufreq.nixosModules.default

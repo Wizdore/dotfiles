@@ -14,15 +14,15 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit ice wait lucid
 zinit light zsh-users/zsh-syntax-highlighting
 
-zinit ice wait lucid
-zinit light marlonrichert/zsh-autocomplete
+# zinit ice wait lucid
+# zinit light marlonrichert/zsh-autocomplete
 
 zinit wait lucid for \
   OMZP::git \
   OMZP::sudo \
   OMZP::command-not-found
 
-zinit light jeffreytse/zsh-vi-mode
+# zinit light jeffreytse/zsh-vi-mode
 ZVM_VI_ESCAPE_BINDKEY='jk'
 
 zinit ice wait lucid
@@ -93,6 +93,7 @@ alias c='clear'
 alias v='nvim'
 alias vv='nvim .'
 alias zz='z -'
+alias ..='cd ..'
 alias cz='chezmoi'
 alias cza='chezmoi add'
 alias cze='chezmoi edit'
