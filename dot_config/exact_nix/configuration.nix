@@ -28,7 +28,23 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;  # Only need to specify 32-bit support now
 
+    extraPackages = with pkgs; [
+      intel-media-driver    # modern Intel GPUs (Broadwell and newer)
+      intel-compute-runtime # OpenCL support
+      vaapiIntel           # VA-API backend
+      libvdpau-va-gl       # VDPAU backend using VA-API
+    ];
+
+    # 32-bit support packages for Intel
+    extraPackages32 = with pkgs.pkgsi686Linux; [
+      vaapiIntel
+      libva
+    ];
+  };
   services.blueman.enable = true;
   # Enable CUPS to print documents.
   services.printing.enable = true;

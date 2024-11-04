@@ -101,7 +101,8 @@ alias czd='chezmoi diff'
 alias czu='chezmoi update -v'
 alias bwu='export BW_SESSION=$(bw unlock --raw)'
 alias bwl='bw lock'
-
+alias dx='devbox'
+alias zv='function _zv() { z "$1" && nvim .; }; _zv'
 
 export DOTNET_ASPIRE_CONTAINER_RUNTIME=podman
 eval "$(starship init zsh)"

@@ -2,18 +2,24 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'catppuccin/nvim', name = 'catppuccin' },
   config = function()
+    -- Create a global variable to track debug mode state
+    vim.g.debug_mode_active = false
+
     local mode = {
       'mode',
       fmt = function(str)
+        -- Check if we're in debug mode
+        if vim.g.debug_mode_active then
+          return '🔍 Debug'
+        end
         return ' ' .. str
-        -- return ' ' .. str:sub(1, 1) -- displays only the first character of the mode
       end,
     }
 
     local filename = {
       'filename',
       file_status = true, -- displays file status (readonly status, modified status)
-      path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
+      path = 0,           -- 0 = just filename, 1 = relative path, 2 = absolute path
     }
 
     local hide_in_width = function()

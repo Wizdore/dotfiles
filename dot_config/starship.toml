@@ -24,9 +24,9 @@ $character"""
 
 # Playful character indicators
 [character]
-success_symbol = "🚀"
-error_symbol = "💥"
-vimcmd_symbol = "👀"
+success_symbol = "λ(bold purple)"
+error_symbol = "Φ(bold red)"
+vimcmd_symbol = "Δ(bold blue)" 
 
 # Directory with emoji substitutions
 [directory]
@@ -191,7 +191,7 @@ format = "[$symbol$version]($style) "
 
 # Status indicators
 [status]
-format = "[$symbol$status]($style) "
+format = "[$status]($style) "
 symbol = "🚫 "
 style = "bold red"
 disabled = false
