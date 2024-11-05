@@ -53,6 +53,7 @@
 
     usbutils
     ripgrep
+    fd
 
     evtest
 
