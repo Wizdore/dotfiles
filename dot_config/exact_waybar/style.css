@@ -3,11 +3,11 @@
   font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Pro";
   font-size: 14px;
   font-weight: 500;
-  background: #181926;
+  background: #1e1e2e;
 }
 
 window#waybar {
-  color: #a5adcb;
+  color: #b4befe;
 }
 .modules-left,
 .modules-right{
@@ -15,13 +15,13 @@ window#waybar {
   padding: 0px 0px;
 }
 tooltip {
-  color: #a5adcb;
+  color: #b4befe;
   background-color: #181926;
   text-shadow: none;
 }
 
 tooltip * {
-  color: #a5adcb;
+  color: #b4befe;
   text-shadow: none;
 }
 
@@ -40,7 +40,7 @@ tooltip * {
   border-radius: 0px;
 }
 #workspaces button {
-  color: #a9adc4;
+  color: #6c7086;
   background: none;
   padding: 0;
 }

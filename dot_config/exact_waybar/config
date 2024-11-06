@@ -82,6 +82,7 @@
       "title<.*youtube.*>": " ", 
       "title<.*Microsoft Teams.*>": " ", 
       "class<firefox>": " ", 
+      "class<com.stremio.stremio>": " ", 
       "class<firefox> title<.*github.*>": " ", 
       "kitty": " ", 
     },
@@ -97,7 +98,7 @@
   },
   "clock": {
     "tooltip": true,
-    "format": "{:%a %e %b, %R}",
+    "format": "{:%a%e %b, %R}",
     "tooltip-format": "{:%Y-%b-%d}",
   },
   "tray": {

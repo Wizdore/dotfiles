@@ -30,6 +30,10 @@ return {
       automatic_installation = true,
     }
 
+    vim.diagnostic.config {
+      virtual_text = false,
+    }
+
     local sources = {
       diagnostics.checkmake,
       diagnostics.mypy,

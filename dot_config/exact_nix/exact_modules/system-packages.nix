@@ -6,6 +6,7 @@
 
   environment.systemPackages = with pkgs; [
     nix-prefetch-github
+    stremio
     bluetui
     impala
     haskellPackages.patat
