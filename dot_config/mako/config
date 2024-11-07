@@ -8,15 +8,14 @@ sort=+time
 
 
 # Colors
-
 background-color=#1e1e2e
 text-color=#cdd6f4
 border-color=#89b4fa
 progress-color=over #313244
-
-[urgency=high]
-border-color=#fab387
-font= monospace 10
+#
+# [urgency=high]
+# border-color=#fab387
+# font= monospace 10
 
 on-button-left=invoke-default-action
 on-button-middle=dismiss-group
@@ -28,22 +27,22 @@ on-touch=invoke-default-action
 width=399
 
 # maximum height of notification( value in px )
-height=199
+height=299
 
 # margin of notification which is margin for the list of notification block( value in px ).
 outer-margin=2
 # Margin of each individual notification
-margin=2
+margin=4
 
 # Set padding on each side to the size specified by directional( value in px )
-padding=2
+padding=4
 
 #Set popup border size to px pixels.(value in px )
 border-size=2
 
 
 # bordear radious of each notification(value in px )
-border-radius=4
+border-radius=3
 
 # Show icons in notifications.( value: -1 | 1 )
 icons=1
