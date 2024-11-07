@@ -3,11 +3,11 @@
   font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Pro";
   font-size: 14px;
   font-weight: 500;
-  background: #1e1e2e;
+  background: #11111b;
 }
 
 window#waybar {
-  color: #b4befe;
+  color: #585b70;
 }
 .modules-left,
 .modules-right{
@@ -40,7 +40,7 @@ tooltip * {
   border-radius: 0px;
 }
 #workspaces button {
-  color: #6c7086;
+  color: #585b70;
   background: none;
   padding: 0;
 }
@@ -68,5 +68,5 @@ tooltip * {
 
 #custom-powermenu {
   margin: 12px 0 0 0;
-  color: #6e738d;
+  color: #585b70;
 }

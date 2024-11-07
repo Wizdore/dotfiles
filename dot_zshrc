@@ -9,25 +9,28 @@ fi
 
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
+# # Add in zsh plugins
+# # zinit ice wait lucid
+# # zinit light zsh-users/zsh-syntax-highlighting
+#
+zinit ice wait lucid compile
+zinit light zsh-users/zsh-autosuggestions
+zinit ice wait lucid compile
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit ice wait lucid compile
+zinit load atuinsh/atuin
 
-# Add in zsh plugins
-zinit ice wait lucid
-zinit light zsh-users/zsh-syntax-highlighting
-
-# zinit ice wait lucid
-# zinit light marlonrichert/zsh-autocomplete
-
+# # zinit ice wait lucid
+# # zinit light marlonrichert/zsh-autocomplete
+#
 zinit wait lucid for \
   OMZP::git \
   OMZP::sudo \
   OMZP::command-not-found
 
 # zinit light jeffreytse/zsh-vi-mode
-ZVM_VI_ESCAPE_BINDKEY='jk'
-
-zinit ice wait lucid
-zinit load atuinsh/atuin
-
+# ZVM_VI_ESCAPE_BINDKEY='jk'
+#
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
   yazi "$@" --cwd-file="$tmp"
@@ -37,9 +40,9 @@ function y() {
   rm -f -- "$tmp"
 }
 
-# Create a zsh widget to call yazi
+# # Create a zsh widget to call yazi
 zle -N yazi-widget y
-
+#
 # Define sesh-sessions function if not already defined
 function sesh-sessions() {
   {
@@ -55,7 +58,6 @@ function sesh-sessions() {
 # Create a zsh widget to call sesh-sessions
 zle -N sesh-sessions-widget sesh-sessions
 
-eval "$(atuin init zsh)"
 
 # Ensure Ctrl+R works with the vi mode plugin
 ZVM_INIT_MODE=sourcing  # This helps with plugin compatibility
@@ -66,8 +68,8 @@ function zvm_after_init() {
 
 
 # Get the dynamic linker path
-export NIX_LD=$(cat $(nix eval --raw nixpkgs#stdenv.cc)/nix-support/dynamic-linker)
-export NIX_LD_DEBUG=1
+# export NIX_LD=$(cat $(nix eval --raw nixpkgs#stdenv.cc)/nix-support/dynamic-linker)
+# export NIX_LD_DEBUG=1
 
 # Other Bindings
 bindkey '^[s' sesh-sessions-widget
@@ -85,7 +87,7 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
-
+#
 # Aliases
 alias l='eza -a'
 alias ll='eza -la'
@@ -103,7 +105,7 @@ alias bwu='export BW_SESSION=$(bw unlock --raw)'
 alias bwl='bw lock'
 alias dx='devbox'
 alias zv='function _zv() { z "$1" && nvim .; }; _zv'
-
+#
 export DOTNET_ASPIRE_CONTAINER_RUNTIME=podman
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+eval "$(starship init zsh; zoxide init zsh; atuin init zsh)"
+#
