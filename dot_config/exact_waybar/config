@@ -28,7 +28,7 @@
     "tray",
   ],
   "custom/sep": {
-    "format": "|"
+    "format": " "
   },
   "custom/powermenu": {
     "on-click": "~/.config/wofi/scripts/wofipowermenu.py",
@@ -78,6 +78,7 @@
   "format": "  <sup>{icon} </sup>{windows}",
   "format-window-separator": " ",
   "window-rewrite-default": "?",
+  "show-special": true,
   "window-rewrite": {
       "title<.*youtube.*>": " ", 
       "title<.*Microsoft Teams.*>": " ", 
