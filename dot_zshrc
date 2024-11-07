@@ -10,9 +10,7 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 # # Add in zsh plugins
-# # zinit ice wait lucid
-# # zinit light zsh-users/zsh-syntax-highlighting
-#
+
 zinit ice wait lucid compile
 zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid compile
@@ -20,9 +18,9 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit ice wait lucid compile
 zinit load atuinsh/atuin
 
-# # zinit ice wait lucid
-# # zinit light marlonrichert/zsh-autocomplete
-#
+# zinit ice wait lucid
+# zinit light marlonrichert/zsh-autocomplete
+
 zinit wait lucid for \
   OMZP::git \
   OMZP::sudo \
@@ -30,7 +28,7 @@ zinit wait lucid for \
 
 # zinit light jeffreytse/zsh-vi-mode
 # ZVM_VI_ESCAPE_BINDKEY='jk'
-#
+
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
   yazi "$@" --cwd-file="$tmp"
@@ -40,9 +38,9 @@ function y() {
   rm -f -- "$tmp"
 }
 
-# # Create a zsh widget to call yazi
+# Create a zsh widget to call yazi
 zle -N yazi-widget y
-#
+
 # Define sesh-sessions function if not already defined
 function sesh-sessions() {
   {
@@ -87,7 +85,7 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
-#
+
 # Aliases
 alias l='eza -a'
 alias ll='eza -la'
@@ -105,7 +103,8 @@ alias bwu='export BW_SESSION=$(bw unlock --raw)'
 alias bwl='bw lock'
 alias dx='devbox'
 alias zv='function _zv() { z "$1" && nvim .; }; _zv'
-#
+
+
 export DOTNET_ASPIRE_CONTAINER_RUNTIME=podman
 eval "$(starship init zsh; zoxide init zsh; atuin init zsh)"
-#
+
