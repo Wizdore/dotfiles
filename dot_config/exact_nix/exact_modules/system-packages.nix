@@ -5,6 +5,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    lazygit
     nix-prefetch-github
     stremio
     bluetui
