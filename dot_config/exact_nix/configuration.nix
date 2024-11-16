@@ -19,7 +19,7 @@
   boot.kernelParams = [ "fsync=1" ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot = {
-    kernelModules = [ "snd_hda_intel" "fuse" ];
+    kernelModules = [ "snd_hda_intel" "fuse" "uvcvideo" ];
   };
 
   
@@ -61,7 +61,7 @@
   users.users.wizdore = {
     isNormalUser = true;
     description = "Shaon";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
   };
 
   xdg.portal = {
@@ -146,15 +146,38 @@
   };
 
   fonts = {
+    fontDir.enable = true;
+    enableGhostscriptFonts = true;
     packages = with pkgs; [
       noto-fonts-emoji
       noto-fonts-cjk-sans 
+      noto-fonts
       font-awesome
       symbola
       material-icons
       cozette
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      liberation_ttf
+      fira-code
+      fira-code-symbols
+      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
     ];
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "JetBrains Mono" "DejaVu Sans Mono" ];
+        sansSerif = [ "Noto Sans" "DejaVu Sans" ];
+        serif = [ "Noto Serif" "DejaVu Serif" ];
+      };
+      enable = true;
+      antialias = true;
+      hinting = {
+        enable = true;
+        style = "full";
+      };
+      subpixel = {
+        rgba = "rgb";
+        lcdfilter = "default";
+      };
+    };
   };
 
 
