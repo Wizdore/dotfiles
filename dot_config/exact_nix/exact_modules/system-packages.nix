@@ -5,6 +5,8 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    jetbrains-toolbox
+    jetbrains-mono
     lazygit
     nix-prefetch-github
     stremio
