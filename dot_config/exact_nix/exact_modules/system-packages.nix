@@ -5,6 +5,9 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    # system benchmarking tools
+    unixbench
+
     jetbrains-toolbox
     jetbrains-mono
     lazygit
