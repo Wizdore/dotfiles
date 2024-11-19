@@ -77,7 +77,7 @@
   "hyprland/workspaces": {
   "format": "  <sup>{icon} </sup>{windows}",
   "format-window-separator": " ",
-  "window-rewrite-default": "",
+  "window-rewrite-default": " ",
   "show-special": true,
   "on-scroll-up": "hyprctl dispatch workspace e+1",
   "on-scroll-down": "hyprctl dispatch workspace e-1",
