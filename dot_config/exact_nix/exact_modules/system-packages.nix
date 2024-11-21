@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {  
   # Allow unfree packages
@@ -7,7 +7,7 @@
   environment.systemPackages = with pkgs; [
     # system benchmarking tools
     unixbench
-
+    inputs.zen-browser.packages."${system}".specific
     jetbrains-toolbox
     jetbrains-mono
     lazygit
@@ -31,6 +31,7 @@
     lua-language-server
     nodejs
     python313
+    uv
     devbox
     wofi
     waybar

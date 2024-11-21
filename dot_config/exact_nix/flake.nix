@@ -2,9 +2,8 @@
   description = "WizNix";
 
   inputs = {
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,6 +26,7 @@
 
         # should be in the ./flakes/ dir, but fine for now
         auto-cpufreq.nixosModules.default
+
       ];
     };
   };
