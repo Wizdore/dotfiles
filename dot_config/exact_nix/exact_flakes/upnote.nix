@@ -7,7 +7,7 @@
       src = pkgs.fetchurl {
         url = "https://upnote.sfo3.cdn.digitaloceanspaces.com/UpNote.AppImage";
         # Replace this with the actual hash from nix-prefetch-url
-        sha256 = "0przmsp8g4y13hycwjh43xl5arrgbmi2wg5rdv2ghi33bwcbjlnb";
+        sha256 = "1x9ffzzy0nblflys6m4qi2dwlvmrkk8ybkhfzgnnni08ld8jx5kv";
       };
       extraPkgs = pkgs: with pkgs; [
         # Essential runtime dependencies for Electron-based apps
