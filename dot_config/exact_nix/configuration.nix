@@ -45,6 +45,9 @@
       libva
     ];
   };
+
+  virtualisation.docker.enable = true;
+
   services.blueman.enable = true;
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -61,7 +64,7 @@
   users.users.wizdore = {
     isNormalUser = true;
     description = "Shaon";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" "docker" ];
   };
 
   xdg.portal = {
