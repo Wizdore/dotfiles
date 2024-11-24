@@ -5,6 +5,10 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    docker
+    docker-compose
+    lazydocker
+
     # system benchmarking tools
     unixbench
     inputs.zen-browser.packages."${system}".specific
