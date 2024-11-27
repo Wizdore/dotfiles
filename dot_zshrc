@@ -107,5 +107,5 @@ alias zv='function _zv() { z "$1" && nvim .; }; _zv'
 
 
 export DOTNET_ASPIRE_CONTAINER_RUNTIME=podman
-eval "$(starship init zsh; zoxide init zsh; atuin init zsh)"
+eval "$(starship init zsh; zoxide init zsh; atuin init zsh; direnv hook zsh)"
 
