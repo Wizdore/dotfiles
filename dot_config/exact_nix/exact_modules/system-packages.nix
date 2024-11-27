@@ -5,6 +5,8 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    weechat-unwrapped
+
     docker
     docker-compose
     lazydocker
@@ -14,6 +16,7 @@
     inputs.zen-browser.packages."${system}".specific
     jetbrains-toolbox
     jetbrains-mono
+    zed-editor
     lazygit
     nix-prefetch-github
     stremio
@@ -36,6 +39,7 @@
     nodejs
     python313
     uv
+    direnv
     devbox
     wofi
     waybar
