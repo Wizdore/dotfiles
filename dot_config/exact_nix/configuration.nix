@@ -129,11 +129,13 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  # Steam <3
+  # Steam setup <3
+  programs.java.enable = true; 
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; 
     dedicatedServer.openFirewall = true; 
+    gamescopeSession.enable = true;
   };
 
   # Hyprland
