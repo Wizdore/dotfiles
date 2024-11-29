@@ -87,12 +87,14 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Aliases
+alias s='sudo'
 alias l='eza -a'
 alias ll='eza -la'
 alias c='clear'
 alias v='nvim'
 alias vv='nvim .'
 alias lg='lazygit'
+alias ld='sudo lazydocker'
 alias zz='z -'
 alias ..='cd ..'
 alias cz='chezmoi'
@@ -100,8 +102,8 @@ alias cza='chezmoi add'
 alias cze='chezmoi edit'
 alias czd='chezmoi diff'
 alias czu='chezmoi update -v'
-alias bwu='export BW_SESSION=$(bw unlock --raw)'
-alias bwl='bw lock'
+alias bwu='export BW_SESSION=$(bw unlock --raw)' # unlock bitwarden
+alias bwl='bw lock' # lock bitwarden
 alias dx='devbox'
 alias zv='function _zv() { z "$1" && nvim .; }; _zv'
 
