@@ -28,6 +28,8 @@
     termshark
     btop
 
+    presenterm
+
     nwg-look
     nwg-displays
 
