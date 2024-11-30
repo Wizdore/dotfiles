@@ -133,7 +133,6 @@
       material-icons
       cozette
       liberation_ttf
-      fira-code
       fira-code-symbols
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
     ];
