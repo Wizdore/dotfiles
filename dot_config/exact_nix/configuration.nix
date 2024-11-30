@@ -134,7 +134,10 @@
       cozette
       liberation_ttf
       fira-code-symbols
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
+      nerd-fonts.fira-code
+      nerd-fonts.droid-sans-mono
+      nerd-fonts.monaspace
+      nerd-fonts.jetbrains-mono
     ];
     fontconfig = {
       defaultFonts = {
