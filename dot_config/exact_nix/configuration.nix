@@ -93,35 +93,6 @@
     flake = "/home/wizdore/.config/nix/";
   };
 
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      # Standard dynamic linking
-      stdenv.cc.cc
-      stdenv.cc.libc
-      
-      # Core system libraries
-      zlib
-      glib
-      openssl
-      
-      # Python-related
-      python313
-      python313.pkgs.pip
-      
-      # Additional runtime libraries
-      curl
-      util-linux
-      icu
-      zlib
-      
-      # Additional dependencies that might be needed
-      libstdcxx5
-      gcc.cc.lib
-      glibc
-    ];
-  };
-
   # Install firefox.
   programs.firefox.enable = true;
 
