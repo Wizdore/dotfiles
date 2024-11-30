@@ -15,8 +15,6 @@
     unixbench
     inputs.zen-browser.packages."${system}".specific
     jetbrains-toolbox
-    jetbrains-mono
-    zed-editor
     lazygit
     nix-prefetch-github
     stremio
