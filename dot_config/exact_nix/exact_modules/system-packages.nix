@@ -55,7 +55,9 @@
     jq
     hyperfine
 
-    bibata-cursors
+    (bibata-cursors.overrideAttrs (oldAttrs: {
+      version = "2.0.6";
+    }))
     mpv-unwrapped
 
     neovim
