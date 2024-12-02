@@ -89,6 +89,7 @@
       "class<UpNote>": " ", 
       "class<com.stremio.stremio>": " ", 
       "title<.*github.*>": " ", 
+      "title<weechat>": " ", 
       "class<.*jetbrains.*>": " ", 
       "title<.*ChatGPT.*>": " ", 
       "title<.*Claude.*>": " ", 
