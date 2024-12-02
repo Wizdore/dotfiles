@@ -4,14 +4,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   };
 
-  outputs = { self, nixpkgs, auto-cpufreq, ... }@inputs: {
+  outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations.capgemini = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -22,11 +17,6 @@
 
         # My custom flakes
         ./flakes/upnote.nix
-        # ./flakes/termfu.nix # Its still WIP
-
-        # should be in the ./flakes/ dir, but fine for now
-        auto-cpufreq.nixosModules.default
-
       ];
     };
   };
