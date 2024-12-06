@@ -104,6 +104,7 @@ alias czd='chezmoi diff'
 alias czu='chezmoi update -v'
 alias bwu='export BW_SESSION=$(bw unlock --raw)' # unlock bitwarden
 alias bwl='bw lock' # lock bitwarden
+alias kl='pkill -9'
 alias dx='devbox'
 alias zv='function _zv() { z "$1" && nvim .; }; _zv'
 
