@@ -108,7 +108,28 @@
   "clock": {
     "tooltip": true,
     "format": "{:%a %e %b, %R}",
-    "tooltip-format": "{:%Y-%b-%d}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "first-day"     : 1,
+      "mode"          : "year",
+      "mode-mon-col"  : 3,
+      "weeks-pos"     : "right",
+      "on-scroll"     : 1,
+      "format": {
+        "months":     "<span color='#cdd6f4'><b>{}</b></span>",
+        "days":       "<span color='#b4befe'><b>{}</b></span>",
+        "weeks":      "<span color='#89b4fa'><b> {}</b></span>",
+        "weekdays":   "<span color='#f9e2af'><b>{}</b></span>",
+        "today":      "<span color='#f38ba8'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions":  {
+      "on-click-right": "mode",
+      "on-scroll-up": "tz_up",
+      "on-scroll-down": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
   },
   "tray": {
     "icon-size": 18,
