@@ -85,7 +85,7 @@
       "title<.*youtube.*>": " ", 
       "title<.*Microsoft Teams.*>": " ", 
       "class<firefox>": " ", 
-      "class<zen-alpha>": " ", 
+      "class<zen-beta>": " ", 
       "class<UpNote>": " ", 
       "class<com.stremio.stremio>": " ", 
       "title<.*github.*>": " ", 
