@@ -21,6 +21,7 @@
     stremio
     bluetui
     impala
+    trippy
     haskellPackages.patat
     
     # System Detective
