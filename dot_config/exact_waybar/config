@@ -11,6 +11,8 @@
   "modules-right": [
     "custom/bus_times",
     "custom/sep",
+//    "network",
+//    "custom/sep",
     "battery",
     "custom/sep",
 //    "temperature",
@@ -34,6 +36,19 @@
     "on-click": "~/.config/wofi/scripts/wofipowermenu.py",
     "format": "",
     "tooltip": false
+  },
+  "network": {
+    "interface": "wlp0s20f3",
+    "interval": 2,
+    "format": "{ifname}",
+    "format-wifi": "{bandwidthUpBytes} {bandwidthDownBytes}",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+    "format-disconnected": "", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 70
   },
   "custom/bluetooth_devices": {
     "exec": "$HOME/.config/waybar/custom_modules/bluetooth_devices.sh",
