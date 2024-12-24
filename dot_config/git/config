@@ -23,5 +23,6 @@
 	whitespace = red reverse
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	sshCommand = ssh -i ~/.ssh/id_ed25519_strong
 [diff-so-fancy]
 	first-run = false
