@@ -14,7 +14,7 @@
 
     # system benchmarking tools
     unixbench
-    inputs.zen-browser.packages."${system}".specific
+    inputs.zen-browser.packages."${system}"
     jetbrains-toolbox
     lazygit
     nix-prefetch-github
@@ -78,7 +78,6 @@
     evtest
 
     ungoogled-chromium
-    tridactyl-native
     yazi
     wirelesstools
     starship
@@ -109,6 +108,7 @@
 
     zoxide
     pavucontrol
+    mupdf
 
     udiskie
     imv
