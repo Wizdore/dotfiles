@@ -6,7 +6,7 @@ return {
     require('catppuccin').setup {
       flavour = 'mocha', -- Set the flavor to mocha
       background = { light = 'latte', dark = 'mocha' },
-      transparent_background = true, -- Set to false initially
+      transparent_background = false, -- Set to false initially
       show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
       term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
       dim_inactive = {
@@ -61,6 +61,5 @@ return {
       }
       vim.cmd.colorscheme 'catppuccin'
     end
-    vim.keymap.set('n', '<leader>bg', toggle_transparency, { noremap = true, silent = true })
   end,
 }
