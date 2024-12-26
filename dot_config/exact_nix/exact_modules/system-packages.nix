@@ -67,6 +67,11 @@
     wget
     unrar
     unzip
+    go
+    gcc
+    rustup
+    luajitPackages.luarocks
+    lua-language-server
 
     alsa-ucm-conf
     alsa-utils
