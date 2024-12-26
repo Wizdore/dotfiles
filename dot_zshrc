@@ -111,5 +111,4 @@ alias zz='z -'
 
 
 export DOTNET_ASPIRE_CONTAINER_RUNTIME=podman
-eval "$(starship init zsh; zoxide init zsh; atuin init zsh; direnv hook zsh)"
-
+eval "$(starship init zsh; zoxide init zsh; atuin init zsh; direnv hook zsh; devbox global shellenv)"
