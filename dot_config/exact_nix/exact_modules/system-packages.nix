@@ -37,10 +37,6 @@
 
     catppuccin-gtk
     bitwarden-cli
-    lua-language-server
-    nodejs
-    python313
-    uv
     direnv
     devbox
     wofi
@@ -62,16 +58,10 @@
     }))
     mpv-unwrapped
 
-    neovim
     curl
     wget
     unrar
     unzip
-    go
-    gcc
-    rustup
-    luajitPackages.luarocks
-    lua-language-server
 
     alsa-ucm-conf
     alsa-utils
