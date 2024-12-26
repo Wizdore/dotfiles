@@ -14,7 +14,7 @@
 
     # system benchmarking tools
     unixbench
-    inputs.zen-browser.packages."${system}"
+    inputs.zen-browser.packages."${system}".default
     jetbrains-toolbox
     lazygit
     nix-prefetch-github
