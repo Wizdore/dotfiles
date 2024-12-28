@@ -44,6 +44,7 @@ return {
 
     -- [[ Configure Telescope ]]
     -- See `:help telescope` and `:help telescope.setup()`
+    require("telescope").load_extension("persisted")
     require('telescope').setup {
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
@@ -72,6 +73,9 @@ return {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
         },
+        persisted = {
+          layout_config = { width = 0.55, height = 0.55 }
+        },
       },
     }
 
@@ -92,6 +96,24 @@ return {
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
+    -- Loading sessions with persisted
+    vim.keymap.set('n', '<leader>sa', function()
+      require('telescope').extensions.persisted.persisted()
+    end, { desc = '[S]essions with [A]rchived' })
+
+    -- Session Switching using Persisted+Telescope
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "PersistedTelescopeLoadPre",
+      callback = function()
+        -- Close Neotree if it's open
+        vim.cmd("Neotree close")
+        -- Save the currently loaded session
+        require("persisted").save({ session = vim.g.persisted_loaded_session })
+        -- Delete all open buffers
+        vim.api.nvim_input("<ESC>:%bd!<CR>")
+      end,
+    })
+    
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
       -- You can pass additional configuration to Telescope to change the theme, layout, etc.
