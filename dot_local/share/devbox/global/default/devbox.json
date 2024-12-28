@@ -8,7 +8,8 @@
     "nodejs@latest",
     "uv@latest",
     "python313@latest",
-    "luajitPackages.luarocks@latest"
+    "luajitPackages.luarocks@latest",
+    "rust-analyzer@latest"
   ],
   "env": {
     "PATH": "$PATH:$HOME/.local/share/nvim/mason/bin"
