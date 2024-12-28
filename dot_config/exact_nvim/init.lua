@@ -15,24 +15,25 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Set up plugins
 require('lazy').setup {
-  require 'plugins.neotree',
-  require 'plugins.colortheme_cat',
   -- require 'plugins.bufferline',
-  require 'plugins.lualine',
-  require 'plugins.treesitter',
-  require 'plugins.telescope',
-  require 'plugins.lsp',
-  require 'plugins.dap',
-  require 'plugins.autocompletion',
-  require 'plugins.none-ls',
-  require 'plugins.gitsigns',
   require 'plugins.alpha',
+  require 'plugins.autocompletion',
+  require 'plugins.colortheme_cat',
+  require 'plugins.comment',
+  require 'plugins.dap',
+  require 'plugins.flash',
+  require 'plugins.gitsigns',
   require 'plugins.indent-blankline',
   require 'plugins.lazygit',
+  require 'plugins.lsp',
+  require 'plugins.lualine',
   require 'plugins.misc',
-  require 'plugins.comment',
-  require 'plugins.flash',
+  require 'plugins.neotree',
+  require 'plugins.none-ls',
   require 'plugins.overseer',
+  require 'plugins.persisted',
+  require 'plugins.telescope',
+  require 'plugins.treesitter',
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
