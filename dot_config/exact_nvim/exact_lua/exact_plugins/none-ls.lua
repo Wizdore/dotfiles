@@ -13,19 +13,19 @@ return {
     require('mason-null-ls').setup {
       ensure_installed = {
         -- 'prettier', -- ts/js formatter
-        'stylua', -- lua formatter
-        'golangci-lint',
+        -- 'stylua', -- lua formatter
+        -- 'golangci-lint',
         -- 'eslint_d', -- ts/js linter
         -- 'shfmt', -- Shell formatter
         -- 'checkmake', -- linter for Makefiles
-        'ruff', -- Python linter and formatter
-        'black',
-        'mypy',
-        'debugpy',
-        'ruff-lsp',
-        'pyright',
+        -- 'ruff', -- Python linter and formatter
+        -- 'black',
+        -- 'mypy',
+        -- 'debugpy',
+        -- 'ruff-lsp',
+        -- 'pyright',
         -- 'rustfmt', -- Python linter and formatter
-        'gofmt',
+        -- 'gofmt',
       },
       automatic_installation = true,
     }
