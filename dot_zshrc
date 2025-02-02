@@ -97,7 +97,7 @@ alias cza='chezmoi add'
 alias czd='chezmoi diff'
 alias cze='chezmoi edit'
 alias czu='chezmoi update -v'
-alias dx='devbox'
+alias dvx='devbox'
 alias kl='pkill -9'
 alias l='eza -a'
 alias ld='sudo lazydocker'
@@ -111,4 +111,4 @@ alias zz='z -'
 
 
 export DOTNET_ASPIRE_CONTAINER_RUNTIME=podman
-eval "$(starship init zsh; zoxide init zsh; atuin init zsh; direnv hook zsh; devbox global shellenv)"
+eval "$(starship init zsh; zoxide init zsh; atuin init zsh; direnv hook zsh)"
