@@ -9,16 +9,17 @@
     "hyprland/window",
   ],
   "modules-right": [
-    "custom/bus_times",
-    "custom/sep",
-//    "network",
-//    "custom/sep",
-    "battery",
-    "custom/sep",
-//    "temperature",
-//    "custom/sep",
-//    "cpu",
-//    "custom/sep",
+  "custom/recorder",
+  "custom/bus_times",
+  "custom/sep",
+  //    "network",
+  //    "custom/sep",
+  "battery",
+  "custom/sep",
+  //    "temperature",
+  //    "custom/sep",
+  //    "cpu",
+  //    "custom/sep",
     "memory",
     "custom/sep",
     "disk",
@@ -31,6 +32,11 @@
   ],
   "custom/sep": {
     "format": " "
+  },
+  "custom/recorder": {
+    "exec": "~/Scripts/wf-recorder/record-status.sh",
+    "interval": 1, 
+    "tooltip": true
   },
   "custom/powermenu": {
     "on-click": "~/.config/wofi/scripts/wofipowermenu.py",
