@@ -12,6 +12,8 @@
     docker-compose
     lazydocker
 
+    shotcut
+
     # system benchmarking tools
     unixbench
     inputs.zen-browser.packages."${system}".default
@@ -52,6 +54,9 @@
     fastfetch
     jq
     hyperfine
+
+    wf-recorder
+    slurp
 
     (bibata-cursors.overrideAttrs (oldAttrs: {
       version = "2.0.6";
@@ -108,5 +113,15 @@
     udiskie
     imv
     simple-mtpfs
+
+    neovim
+    go
+    gcc
+    rustup
+    nodejs
+    uv
+    python313
+    luajitPackages.luarocks
+    rust-analyzer
   ];
 }
