@@ -1,0 +1,237 @@
+# Starship the Pinik Style 
+
+format = """
+$os\
+$username\
+$directory\
+$git_branch\
+$git_status\
+$kubernetes\
+$docker_context\
+$aws\
+$python\
+$nodejs\
+$rust\
+$golang\
+$java\
+$package\
+$line_break\
+$battery\
+$time\
+$jobs\
+$status\
+$character"""
+
+# Playful character indicators
+[character]
+success_symbol = "λ(bold purple)"
+error_symbol = "Φ(bold red)"
+vimcmd_symbol = "Δ(bold blue)" 
+
+# Directory with emoji substitutions
+[directory]
+style = "bold cyan"
+read_only = "🔒"
+truncation_length = 4
+truncate_to_repo = true
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[directory.substitutions]
+"Documents" = "📄 "
+"Downloads" = "📥 "
+"Music" = "🎵 "
+"Pictures" = "🖼️ "
+"Videos" = "🎬 "
+"Work" = "💻 "
+".config" = "⚙️ "
+"Desktop" = "🖥️ "
+
+# Git status with emojis
+[git_branch]
+symbol = "🌱 "
+style = "bold green"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "bold red"
+format = '([\[$all_status$ahead_behind\]]($style) )'
+ahead = "⬆️ ${count}"
+behind = "⬇️ ${count}"
+diverged = "↕️ ${ahead_count}⬇️ ${behind_count}"
+stashed = "📦 ${count}"
+modified = "📝 ${count}"
+staged = "✅ ${count}"
+renamed = "📛 ${count}"
+deleted = "🗑️ ${count}"
+untracked = "❓ ${count}"
+
+# Development environments and tools
+[docker_context]
+symbol = "🐳 "
+style = "bold blue"
+format = '[$symbol$context]($style) '
+
+[kubernetes]
+symbol = "☸️ "
+style = "bold cyan"
+format = '[$symbol$context( \($namespace\))]($style) '
+disabled = false
+detect_files = ['k8s', 'kubernetes', 'Dockerfile']
+
+[aws]
+symbol = "☁️ "
+style = "bold yellow"
+format = '[$symbol($profile)(\($region\))]($style) '
+
+[nix_shell]
+symbol = "❄️ "
+style = "bold blue"
+format = '[$symbol$state( \($name\))]($style) '
+
+# Programming languages
+[python]
+symbol = "🐍 "
+style = "bold yellow"
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+python_binary = ["./venv/bin/python", "python", "python3"]
+
+[nodejs]
+symbol = "💚 "
+style = "bold green"
+format = '[$symbol($version )]($style)'
+
+[rust]
+symbol = "🦀 "
+style = "bold red"
+format = '[$symbol($version )]($style)'
+
+[golang]
+symbol = "🦫 "
+style = "bold cyan"
+format = '[$symbol($version )]($style)'
+
+[java]
+symbol = "☕ "
+style = "bold red"
+format = '[$symbol($version )]($style)'
+
+[ruby]
+symbol = "💎 "
+style = "bold red"
+format = '[$symbol($version )]($style)'
+
+# System monitoring
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡ "
+discharging_symbol = "💀 "
+unknown_symbol = "❓ "
+empty_symbol = "⚠️ "
+format = "[$symbol$percentage]($style) "
+disabled = false
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+
+[time]
+disabled = true
+time_format = "%R"
+style = "bold blue"
+format = '🕐 [$time]($style) '
+
+[cmd_duration]
+min_time = 2000
+format = "⏱️ [$duration]($style) "
+style = "bold yellow"
+
+[jobs]
+symbol = "📋 "
+style = "bold blue"
+number_threshold = 1
+format = "[$symbol$number]($style)"
+
+[memory_usage]
+symbol = "🧠 "
+style = "bold dimmed red"
+format = '$symbol[$ram_pct]($style) '
+threshold = 75
+disabled = false
+
+# OS detection (using emojis where appropriate, fallback to Nerd Font)
+[os]
+format = "[$symbol]($style)"
+style = "bold blue"
+disabled = true
+
+[os.symbols]
+Windows = "🪟 "
+Ubuntu = "🎯 "
+SUSE = "🦎 "
+Raspbian = "🫐 "
+NixOS = "❄️ "
+Mint = "🌿 "
+Macos = "🍎 "
+Linux = "🐧 "
+Gentoo = "🧬 "
+Fedora = "🎩 "
+Alpine = "🏔️ "
+Android = "🤖 "
+Arch = "🏹 "
+
+# Package version
+[package]
+symbol = "📦 "
+style = "bold 208"
+format = "[$symbol$version]($style) "
+
+# Status indicators
+[status]
+format = "[$status]($style) "
+symbol = "🚫 "
+style = "bold red"
+disabled = false
+
+# Custom environment indicators
+[custom.dev_env]
+command = "echo DEV"
+when = "test -f .env.development"
+format = "🛠️ [$output]($style) "
+style = "bold yellow"
+
+[custom.prod_env]
+command = "echo PROD"
+when = "test -f .env.production"
+format = "🚀 [$output]($style) "
+style = "bold red"
+
+[custom.todo]
+command = "echo TODO"
+when = """test -f TODO.md"""
+format = "📝 [$output]($style) "
+style = "bold cyan"
+
+# Smart workspace detection
+[custom.workspace]
+command = "basename $PWD"
+when = "test -d .git"
+format = "🏢 [$output]($style) "
+style = "bold purple"
+
+# Docker compose status
+[custom.docker_compose]
+command = "echo UP"
+when = "test -f docker-compose.yml && docker-compose ps --services --filter 'status=running' | grep ."
+format = "🐋 [$output]($style) "
+style = "bold blue"
+
+# Virtual environment indicator
+[custom.venv]
+command = "basename $VIRTUAL_ENV"
+when = "test -n \"$VIRTUAL_ENV\""
+format = "🐍 [$output]($style) "
+style = "bold green"

@@ -1,0 +1,31 @@
+[difftool]
+    # Run the difftool immediately, don't ask 'are you sure' each time.
+    prompt = false
+
+[diff]
+    # Set difftastic as the default difftool, so we don't need to specify
+    # `-t difftastic` every time.
+    tool = difftastic
+
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	sshCommand = ssh -i ~/.ssh/id_ed25519_strong
+[diff-so-fancy]
+	first-run = false
+[user]
+	name = Shaon Rahman
+	email = wizdore@gmail.com
