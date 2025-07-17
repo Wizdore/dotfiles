@@ -86,19 +86,24 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+
+export TMUX_CONF="$HOME/.config/tmux/tmux.conf"
+
 # Aliases
+alias tmux="tmux -f $TMUX_CONF"
 alias ..='cd ..'
 alias bt='bluetui'
 alias bwl='bw lock' # lock bitwarden
 alias bwu='export BW_SESSION=$(bw unlock --raw)' # unlock bitwarden
 alias c='clear'
 alias cz='chezmoi'
-alias cza='chezmoi add'
+alias cza='chezmoi add --exact'
 alias czd='chezmoi diff'
 alias cze='chezmoi edit'
 alias czu='chezmoi update -v'
 alias dvx='devbox'
 alias kl='pkill -9'
+alias ls='eza'
 alias l='eza -a'
 alias ld='sudo lazydocker'
 alias lg='lazygit'
@@ -109,6 +114,6 @@ alias vv='nvim .'
 alias zv='function _zv() { z "$1" && nvim .; }; _zv'
 alias zz='z -'
 
-
+export PATH="/home/wizdore/.local/bin:$PATH"
 export DOTNET_ASPIRE_CONTAINER_RUNTIME=podman
 eval "$(starship init zsh; zoxide init zsh; atuin init zsh; direnv hook zsh)"
