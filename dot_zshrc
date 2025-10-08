@@ -73,6 +73,11 @@ function zvm_after_init() {
 bindkey '^[s' sesh-sessions-widget
 bindkey '^[w' yazi-widget
 
+# Bind Ctrl+K to previous command (up-line-or-history)
+bindkey '^K' up-line-or-history
+# Bind Ctrl+J to next command (down-line-or-history)
+bindkey '^J' down-line-or-history
+
 # History
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
