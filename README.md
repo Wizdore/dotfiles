@@ -11,7 +11,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)"
 ## Initialization
 
 ```bash
-chezmoi init
+chezmoi init --apply https://github.com/Wizdore/dotfiles.git
 ```
 
 ## Adding Files
