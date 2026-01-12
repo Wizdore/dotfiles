@@ -5,7 +5,13 @@ Most of the dotfiles are chezmoi, except the nixos configs. Im seperaing those o
 ## Installation
 
 ```bash
+# Linux
 sh -c "$(curl -fsLS get.chezmoi.io)"
+```
+
+```bash
+# MacOS
+brew install chezmoi
 ```
 
 ## Initialization
