@@ -1,0 +1,14 @@
+[user]
+    name = Wizdore
+    email = wizdore@gmail.com
+    signingkey = ~/.ssh/id_ed25519_strong.pub
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[credential]
+	helper = osxkeychain
+[init]
+	defaultBranch = main
