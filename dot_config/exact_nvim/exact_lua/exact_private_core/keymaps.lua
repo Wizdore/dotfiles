@@ -29,3 +29,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- delete single character without copying into register
 vim.keymap.set('n', 'x', '"_x', { noremap = true, silent = true })
+
+-- map Ctrl+S to save in normal and insert mode
+vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a', { noremap = true, silent = true })

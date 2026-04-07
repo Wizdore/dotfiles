@@ -4,6 +4,10 @@ set scrolloff=6
 set sidescrolloff=5
 " leader key
 let mapleader = ' '
+" Remove timeout for leader key sequences
+set notimeout
+set nottimeout
+
 
 " redo
 noremap U <C-r>
@@ -21,6 +25,15 @@ set matchpairs+=<:>
 set ideajoin
 
 set surround
+nmap s ys
+" Visual mode surround mappings
+vnoremap s" c"<C-r>""<Esc>
+vnoremap s' c'<C-r>"'<Esc>
+vnoremap s) c(<C-r>")<Esc>
+vnoremap s] c[<C-r>"]<Esc>
+vnoremap s} c{<C-r>"}<Esc>
+vnoremap s> c<<C-r>"><Esc>
+
 set highlightedyank
 set nerdtree
 
@@ -31,8 +44,8 @@ noremap <leader>cc :edit ~/.ideavimrc<cr>
 noremap <leader>cs :source ~/.ideavimrc<cr>:nohlsearch<cr>
 
 " add vim-flash plugin for flash.nvim like feature
-nmap s <Action>(flash.search)
-xmap s <Action>(flash.search)
+nmap f <Action>(flash.search)
+xmap f <Action>(flash.search)
 
 " highlight search results
 set hlsearch
@@ -145,7 +158,8 @@ map <leader>of <Action>(OpenFile)
 map <leader>ri <Action>(RestartIde)
 
 " Running Project
-map <S-j> <Action>(RunClass)
+map <S-h> <Action>(RunClass)
+map <S-j> <Action>(Run)
 map <S-k> <Action>(Stop)
 
 " Debugging
@@ -161,5 +175,4 @@ map <leader>do <Action>(StepOver)
 map <leader>du <Action>(StepOut)
 
 " View Change
-map <leader>zd <action>(ToggleDistractionFreeMode)
-map <leader>zz <action>(ToggleZenMode)
+map <leader>zz <action>(TogglePresentationMode)<action>(ToggleDistractionFreeMode)
