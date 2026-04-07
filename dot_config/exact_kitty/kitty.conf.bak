@@ -1,16 +1,16 @@
+# shell zsh -l -c tmux
 background_opacity 0.8
+hide_window_decorations titlebar-only
+window_margin_width 0
+background_blur 9
 linux_display_server wayland
 window_padding_width 0
 confirm_os_window_close 0
 cursor_trail 3
 cursor_trail_start_threshold 2
-
-
-font_family      family="JetBrainsMono Nerd Font Mono"
-bold_font        auto
-italic_font      auto
-bold_italic_font auto
-
+macos_option_as_alt left
+font_size        18.0
+ 
 allow_remote_control yes
 listen_on unix:/tmp/kitty
 shell_integration enabled
@@ -24,3 +24,17 @@ map kitty_mod+h kitty_scrollback_nvim
 map kitty_mod+g kitty_scrollback_nvim --config ksb_builtin_last_cmd_output
 # Show clicked command output in nvim
 mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output
+
+
+# BEGIN_KITTY_THEME
+# bl1nk
+include vague.conf
+# END_KITTY_THEME
+
+
+# BEGIN_KITTY_FONTS
+font_family      family='Lilex Nerd Font Mono' postscript_name=LilexNFM-Regular
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+# END_KITTY_FONTS
