@@ -161,6 +161,7 @@ map <leader>ri <Action>(RestartIde)
 map <S-h> <Action>(RunClass)
 map <S-j> <Action>(Run)
 map <S-k> <Action>(Stop)
+map <S-l> <Action>(SaveAll)
 
 " Debugging
 map <leader>db <Action>(ToggleLineBreakpoint)
