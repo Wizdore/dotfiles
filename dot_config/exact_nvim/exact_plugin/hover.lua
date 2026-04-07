@@ -2,7 +2,6 @@ vim.pack.add({
 	"https://github.com/lewis6991/hover.nvim",
 })
 
-
 require("hover").config({
 	providers = {
 		"hover.providers.diagnostic",
@@ -24,10 +23,6 @@ require("hover").config({
 	-- to a :h preview-window when pressing the hover keymap.
 	preview_window = true,
 	title = false,
-	mouse_providers = {
-		"hover.providers.lsp",
-	},
-	mouse_delay = 1000,
 })
 
 -- Setup keymaps
@@ -46,10 +41,3 @@ end, { desc = "hover.nvim (previous source)" })
 vim.keymap.set("n", "<C-n>", function()
 	require("hover").switch("next")
 end, { desc = "hover.nvim (next source)" })
-
--- Mouse support
-vim.keymap.set("n", "<MouseMove>", function()
-	require("hover").mouse()
-end, { desc = "hover.nvim (mouse)" })
-
-vim.o.mousemoveevent = true
