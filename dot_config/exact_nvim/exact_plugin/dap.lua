@@ -1,9 +1,24 @@
 vim.pack.add({
+	"https://github.com/mason-org/mason.nvim",
 	"https://github.com/mfussenegger/nvim-dap",
 	{ src = "https://github.com/igorlfs/nvim-dap-view", version = vim.version.range("^1") },
 	"https://github.com/jay-babu/mason-nvim-dap.nvim",
 	"https://github.com/mfussenegger/nvim-dap-python",
 	"https://github.com/theHamsta/nvim-dap-virtual-text",
+})
+
+require("mason").setup({
+	registries = {
+		"github:mason-org/mason-registry",
+		"github:Crashdummyy/mason-registry",
+	},
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
 })
 
 local dap = require("dap")
