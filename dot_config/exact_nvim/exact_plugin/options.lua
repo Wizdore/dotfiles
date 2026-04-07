@@ -47,3 +47,17 @@ vim.o.scroll = 10
 vim.schedule(function()
 	vim.o.clipboard = "unnamedplus"
 end)
+
+-- highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank({ higroup = "Visual", on_macro = true, timeout = 300 })
+	end,
+})
+
+-- Keep the scroll size consistent to 10 even after resize
+vim.api.nvim_create_autocmd("VimResized", {
+	callback = function()
+		vim.o.scroll = 10
+	end,
+})

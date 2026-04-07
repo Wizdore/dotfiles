@@ -25,6 +25,13 @@ require("hover").config({
 	title = false,
 })
 
+-- Show diagnostic on CursorHold
+vim.api.nvim_create_autocmd("CursorHold", {
+	callback = function()
+		require("hover").open({ silent = true })
+	end,
+})
+
 -- Setup keymaps
 vim.keymap.set("n", "K", function()
 	require("hover").open()
