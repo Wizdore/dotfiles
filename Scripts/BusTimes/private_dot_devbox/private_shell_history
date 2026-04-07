@@ -1,0 +1,31 @@
+go run BusTimes
+go run hello
+go run
+ll
+go run hello 44355
+which go
+go run hello.go
+go run hello.go 44355
+go build hello.go
+./hello
+./hello 44245
+go build -tags netgo hello.go
+ldd hello
+du -h
+go build -tags netgo -o BusTimes hello.go
+ldd BusTimes
+du -sh
+du -sh BusTimes
+go build -ldflags="-w -s" hello.go
+go build -ldflags="-w -s" -tags netgo hello.go
+file hello
+go build -ldflags="-w -s" -tags netgo hello.go -o BusTimes
+go build -ldflags="-w -s" -tags netgo -o BusTimes hello.go
+rm -rf hello
+l
+go build -ldflags="-w -s -extldflags '-static' -buildid=" -tags "netgo osusergo static_build" -trimpath -gcflags=all="-l -B" -o BusTimes2 hello.go
+vv
+file BusTimes
+file BusTimes2
+v devbox.json
+exit
