@@ -1,0 +1,6 @@
+Host github.com
+    AddKeysToAgent yes
+    # should work in mac and linux
+    IgnoreUnknown UseKeychain
+    UseKeychain yes 
+    IdentityFile ~/.ssh/id_ed25519_strong
