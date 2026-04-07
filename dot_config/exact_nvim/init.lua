@@ -11,6 +11,7 @@ vim.pack.add({
 	"https://github.com/christoomey/vim-tmux-navigator",
 	"https://github.com/akinsho/toggleterm.nvim",
 	"https://github.com/stevearc/conform.nvim",
+	"https://github.com/xzbdmw/colorful-menu.nvim",
 	"https://github.com/folke/flash.nvim",
 	{
 		src = "https://github.com/saghen/blink.cmp",
