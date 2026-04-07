@@ -9,9 +9,15 @@ set -gx DOTNET_ASPIRE_CONTAINER_RUNTIME podman
 
 set -g fish_key_bindings fish_vi_key_bindings
 
+
+#ENVARS
+set -Ux EDITOR nvim
+set -Ux VISUAL nvim
+
+
 set fish_greeting ""
 # Yazi function with directory changing
-function y
+function yazi-widget
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
     yazi $argv --cwd-file="$tmp"
     if test -f "$tmp"
@@ -31,14 +37,32 @@ function sesh-sessions
     end
 end
 
-# Key bindings
-bind \es sesh-sessions
-bind \ew y
-bind \ck up-or-search
-bind \cj down-or-search
+function t
+  # Check if any tmux session exists
+  if tmux ls &>/dev/null
+    # Attach to the most recently used session
+    tmux attach-session -t (tmux ls | tail -n1 | cut -d: -f1)
+  else
+    # No sessions, create a new one named 'default'
+    tmux new-session -s default
+  end
+end
+
+function bind_all_modes
+    set key $argv[1]
+    set action $argv[2..-1]
+    bind -M insert $key $action
+    bind -M default $key $action
+    bind -M visual $key $action
+end
+
+bind_all_modes alt-s sesh-sessions
+bind_all_modes alt-w yazi-widget
+bind_all_modes \ck up-or-search
+bind_all_modes \cj down-or-search
 
 # Aliases
-alias tmux "tmux -f $TMUX_CONF"
+# alias tmux "tmux -f $TMUX_CONF"
 alias .. 'cd ..'
 alias bt bluetui
 alias bwl 'bw lock'
