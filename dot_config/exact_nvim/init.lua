@@ -1,4 +1,4 @@
-require("vim._core.ui2").enable({})
+-- require("vim._core.ui2").enable({})
 
 vim.lsp.enable({ "lua_ls", "basedpyright", "rust_analyzer", "vtsls" })
 
