@@ -18,10 +18,10 @@ end, "Save file")
 map("n", "U", "<C-r>", "redo")
 
 -- Navigation (Windows)
-map("n", "<C-h>", "<C-w><C-h>", "Move to left window")
-map("n", "<C-l>", "<C-w><C-l>", "Move to right window")
-map("n", "<C-j>", "<C-w><C-j>", "Move to lower window")
-map("n", "<C-k>", "<C-w><C-k>", "Move to upper window")
+map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", "Move to left window")
+map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", "Move to right window")
+map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", "Move to lower window")
+map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", "Move to upper window")
 
 -- Terminal
 map("t", "<Esc><Esc>", [[<C-\><C-n>]], "Exit terminal mode")

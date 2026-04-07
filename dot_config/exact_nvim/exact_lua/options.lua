@@ -33,13 +33,20 @@ vim.o.confirm = true
 vim.o.inccommand = "split"
 vim.o.splitright = true
 vim.o.splitbelow = true
-vim.o.scrolloff = 10
+vim.o.scrolloff = 5
 vim.o.updatetime = 200
 vim.o.timeoutlen = 300
 -- Disable timeout for mappings (Leader will wait forever)
 vim.o.timeout = false
 vim.o.ttimeout = true
 vim.o.ttimeoutlen = 50
+-- scroll 10 lines only
+vim.o.scroll = 10
+vim.api.nvim_create_autocmd("VimResized", {
+	callback = function()
+		vim.o.scroll = 10
+	end,
+})
 
 -- Clipboard (Async for performance)
 vim.schedule(function()
