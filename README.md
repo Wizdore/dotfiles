@@ -17,7 +17,17 @@ brew install chezmoi
 ## Initialization
 
 ```bash
-chezmoi init --apply https://github.com/Wizdore/dotfiles.git
+chezmoi init --apply --branch main https://github.com/Wizdore/dotfiles.git
+```
+
+## Fish aliases
+```fish
+alias cz chezmoi
+alias cza 'chezmoi add --exact'
+alias czd 'chezmoi diff'
+alias cze 'chezmoi edit'
+alias czg 'lazygit -p ~/.local/share/chezmoi'
+alias czu 'chezmoi update -v'
 ```
 
 ## Adding Files
