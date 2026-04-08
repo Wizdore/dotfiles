@@ -72,6 +72,7 @@ alias cz chezmoi
 alias cza 'chezmoi add --exact'
 alias czd 'chezmoi diff'
 alias cze 'chezmoi edit'
+alias czg 'lazygit -p ~/.local/share/chezmoi'
 alias czu 'chezmoi update -v'
 alias dvx devbox
 alias kl 'pkill -9'
