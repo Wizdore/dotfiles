@@ -14,7 +14,7 @@ require("hover").config({
 		-- 'hover.providers.gh_user',
 		-- 'hover.providers.jira',
 		"hover.providers.fold_preview",
-		-- 'hover.providers.highlight',
+		'hover.providers.highlight',
 	},
 	preview_opts = {
 		border = "rounded",
