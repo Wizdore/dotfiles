@@ -74,7 +74,7 @@ map("n", "<leader>lg", function()
 end, { desc = "Lazygit" })
 
 -- Terminal
-map({ "n", "t" }, "<leader>/", function()
+map({ "n", "t" }, "<C-/>", function()
 	Snacks.terminal.toggle()
 end, { desc = "Terminal" })
 
