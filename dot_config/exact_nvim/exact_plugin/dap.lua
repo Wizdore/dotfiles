@@ -33,13 +33,20 @@ require("mason-nvim-dap").setup({
 		function(config)
 			require("mason-nvim-dap").default_setup(config)
 		end,
+		-- skip python — handled by nvim-dap-python below
+		python = function() end,
 	},
 })
 
-require("nvim-dap-virtual-text").setup()
+require("nvim-dap-virtual-text").setup({
+	enabled = true,
+	enabled_commands = true,
+	all_frames = false,
+	virt_text_pos = "eol",
+})
 vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DiagnosticError" })
 vim.fn.sign_define("DapBreakpointCondition", { text = "◆", texthl = "DiagnosticWarn" })
-vim.fn.sign_define("DapStopped", { text = "▶", texthl = "DiagnosticInfo" })
+vim.fn.sign_define("DapStopped", { text = "▶", texthl = "DiagnosticInfo", linehl = "", cursorhl = "" })
 
 -- ── Python (debugpy) ──────────────────────────────────────────────────
 -- nvim-dap-python handles adapter + config automatically
@@ -93,10 +100,9 @@ dap.configurations.rust = {
 
 -- ── nvim-dap-view ─────────────────────────────────────────────────────
 dap_view.setup({
-	-- auto open/close with debug session
 	windows = {
 		terminal = {
-			position = "right",
+			hide = { "debugpy", "codelldb" },
 		},
 	},
 })
