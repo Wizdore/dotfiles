@@ -156,6 +156,30 @@ ins_left {
 -- 	end,
 -- }
 
+-- Track CodeCompanion status via StatusChanged event
+local cc_status = ''
+vim.api.nvim_create_autocmd('User', {
+	pattern = 'CodeCompanionStatusChanged',
+	callback = function(ev)
+		local status = ev.data and ev.data.status or ''
+		if status == 'started' then
+			cc_status = ' thinking…'
+		elseif status == 'finished' then
+			cc_status = ''
+		else
+			cc_status = status ~= '' and (' ' .. status) or ''
+		end
+		vim.cmd('redrawstatus')
+	end,
+})
+
+ins_right {
+	function()
+		return cc_status
+	end,
+	color = { fg = colors.cyan, gui = 'bold' },
+}
+
 ins_right {
 	-- Lsp server name .
 	function()

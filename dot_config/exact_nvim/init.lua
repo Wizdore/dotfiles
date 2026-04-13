@@ -1,3 +1,6 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- require("vim._core.ui2").enable({})
 vim.lsp.enable({ "lua_ls", "clangd", "basedpyright", "rust_analyzer", "vtsls" })
 vim.cmd.packadd("nvim.difftool")
