@@ -9,7 +9,7 @@ vim.o.expandtab = false
 -- Visuals
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.signcolumn = "yes"
+vim.opt.signcolumn = "auto:3"
 vim.o.cursorline = false
 vim.o.showmode = false
 vim.o.list = true
@@ -31,7 +31,7 @@ vim.o.confirm = true
 vim.o.inccommand = "split"
 vim.o.splitright = true
 vim.o.splitbelow = true
-vim.o.scrolloff = 5
+vim.o.scrolloff = 10
 vim.o.updatetime = 200
 vim.o.timeoutlen = 300
 -- Disable timeout for mappings (Leader will wait forever)

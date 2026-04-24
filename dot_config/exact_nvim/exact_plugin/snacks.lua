@@ -3,7 +3,14 @@ vim.pack.add({
 })
 
 require("snacks").setup({
-	picker = { enabled = true },
+	picker = {
+		sources = {
+			buffers = {
+				current = false,
+				sort_lastused = true,
+			},
+		},
+	},
 	lazygit = { enabled = true },
 	notifier = { enabled = true },
 	input = { enabled = true },
@@ -11,11 +18,25 @@ require("snacks").setup({
 	scratch = { enabled = true },
 	indent = {
 		priority = 1,
-		enabled = true, -- enable indent guides
+		enabled = true,
 		char = "│",
-		only_scope = true, -- only show indent guides of the scope
-		only_current = true, -- only show indent guides in the current window
-		hl = "SnacksIndent", ---@type string|string[] hl groups for indent guides
+		only_scope = true,
+		only_current = true,
+		hl = "SnacksIndent",
+		scope = {
+			enabled = true,
+			char = "│",
+			hl = "SnacksIndentScope",
+			filter = function(buf, scope)
+				if not scope or not scope.node then return true end
+				local excluded = {
+					arguments = true,
+					call_expression = true,
+					method_call_expression = true,
+				}
+				return not excluded[scope.node:type()]
+			end,
+		},
 	},
 	animate = {
 		enabled = true,
@@ -44,21 +65,12 @@ require("snacks").setup({
 local map = vim.keymap.set
 
 -- Picker (File Finding)
-map("n", "<leader><leader>", function()
-	Snacks.picker.buffers()
-end, { desc = "Buffers" })
-map("n", "<leader>ss", function()
-	Snacks.picker.smart()
-end, { desc = "Smart Find Files" })
-map("n", "<leader>sf", function()
-	Snacks.picker.files()
-end, { desc = "Find Files" })
-map("n", "<leader>sr", function()
-	Snacks.picker.recent()
-end, { desc = "Recent Files" })
-map("n", "<leader>sg", function()
-	Snacks.picker.grep()
-end, { desc = "Grep Search" })
+map("n", "<leader><leader>", function() Snacks.picker.buffers() end, { desc = "Buffers" })
+map("n", "<leader>ss", function() Snacks.picker.smart() end, { desc = "Smart Find Files" })
+map("n", "<leader>sf", function() Snacks.picker.files() end, { desc = "Find Files" })
+map("n", "<leader>sr", function() Snacks.picker.recent() end, { desc = "Recent Files" })
+map("n", "<leader>sg", function() Snacks.picker.grep() end, { desc = "Grep Search" })
+map("n", "<leader>sm", function() Snacks.picker.marks() end, { desc = "Marks" })
 
 -- Zen Mode
 map("n", "<leader>zz", function()
