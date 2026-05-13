@@ -61,7 +61,7 @@ map("v", "<leader>ce", "<cmd>CodeCompanionChat Add<cr>", { desc = "Add selection
 map("v", "<leader>ci", ":CodeCompanion ", { desc = "Inline CodeCompanion prompt" })
 
 -- Quick inline prompts (visual selection sent as context)
-map("v", "<leader>cr", "<cmd>CodeCompanion Explain this code<cr>", { desc = "Explain selection" })
+map("v", "<leader>cr", "<cmd>CodeCompanion better name in the context of #{buffer}<cr>", { desc = "Better naming" })
 map("v", "<leader>ct", "<cmd>CodeCompanion Write unit tests for this code<cr>", { desc = "Generate tests" })
 map("v", "<leader>cf", "<cmd>CodeCompanion Fix this code<cr>", { desc = "Fix selection" })
 
