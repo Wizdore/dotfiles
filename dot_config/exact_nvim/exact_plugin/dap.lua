@@ -6,6 +6,7 @@ vim.pack.add({
 	"https://github.com/mfussenegger/nvim-dap-python",
 })
 
+-- ── Mason ─────────────────────────────────────────────────────────────
 require("mason").setup({
 	registries = {
 		"github:mason-org/mason-registry",
@@ -20,32 +21,24 @@ require("mason").setup({
 	},
 })
 
-local dap = require("dap")
-local dap_view = require("dap-view")
-
--- ── Mason: auto-install debuggers ─────────────────────────────────────
 require("mason-nvim-dap").setup({
 	ensure_installed = { "python", "codelldb" },
 	automatic_installation = true,
 	handlers = {
-		-- default handler covers everything not explicitly listed
 		function(config)
 			require("mason-nvim-dap").default_setup(config)
 		end,
-		-- skip python — handled by nvim-dap-python below
-		python = function() end,
+		python = function() end, -- handled by nvim-dap-python below
 	},
 })
 
-vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DiagnosticError" })
-vim.fn.sign_define("DapBreakpointCondition", { text = "◆", texthl = "DiagnosticWarn" })
-vim.fn.sign_define("DapStopped", { text = "▶", texthl = "DiagnosticInfo", linehl = "", cursorhl = "" })
+-- ── DAP ───────────────────────────────────────────────────────────────
+local dap = require("dap")
 
--- ── Python (debugpy) ──────────────────────────────────────────────────
--- nvim-dap-python handles adapter + config automatically
+-- Python (debugpy via Mason)
 require("dap-python").setup(vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python")
 
--- ── Rust (codelldb via Mason) ─────────────────────────────────────────
+-- Rust (codelldb via Mason)
 local codelldb = vim.fn.stdpath("data") .. "/mason/packages/codelldb/extension/adapter/codelldb"
 
 dap.adapters.codelldb = {
@@ -63,12 +56,10 @@ dap.configurations.rust = {
 		type = "codelldb",
 		request = "launch",
 		program = function()
-			-- auto-find the debug binary from cargo metadata
 			local cargo = vim.fn.system("cargo metadata --no-deps --format-version 1 2>/dev/null")
 			local ok, meta = pcall(vim.json.decode, cargo)
 			if ok and meta and meta.packages and meta.packages[1] then
-				local name = meta.packages[1].name
-				return vim.fn.getcwd() .. "/target/debug/" .. name
+				return vim.fn.getcwd() .. "/target/debug/" .. meta.packages[1].name
 			end
 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
 		end,
@@ -83,53 +74,57 @@ dap.configurations.rust = {
 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
 		end,
 		args = function()
-			local args = vim.fn.input("Arguments: ")
-			return vim.split(args, " ")
+			return vim.split(vim.fn.input("Arguments: "), " ")
 		end,
 		cwd = "${workspaceFolder}",
 		stopOnEntry = false,
 	},
 }
 
+-- ── Breakpoint highlights ─────────────────────────────────────────────
+-- Defined inside ColorScheme autocmd so they survive colorscheme reloads
+local function set_dap_highlights()
+	vim.api.nvim_set_hl(0, "DapBreakpointLine", { bg = "#241a1e" })  -- faint red
+	vim.api.nvim_set_hl(0, "DapBreakpointCondLine", { bg = "#221a24" }) -- faint purple
+	vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = "#1a201b" })     -- faint green
+	vim.api.nvim_set_hl(0, "DapLogLine", { bg = "#181d26" })         -- faint blue
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", { pattern = "*", callback = set_dap_highlights })
+set_dap_highlights()
+
+-- Single sign_define block — no text, only line highlights
+vim.fn.sign_define("DapBreakpoint", { text = "", linehl = "DapBreakpointLine", texthl = "" })
+vim.fn.sign_define("DapBreakpointCondition", { text = "", linehl = "DapBreakpointCondLine", texthl = "" })
+vim.fn.sign_define("DapBreakpointRejected", { text = "", linehl = "DapBreakpointLine", texthl = "" })
+vim.fn.sign_define("DapLogPoint", { text = "", linehl = "DapLogLine", texthl = "" })
+vim.fn.sign_define("DapStopped", { text = "", linehl = "DapStoppedLine", texthl = "" })
+
 -- ── nvim-dap-view ─────────────────────────────────────────────────────
-dap_view.setup({
+require("dap-view").setup({
 	winbar = {
 		show = true,
-		-- You can add a "console" section to merge the terminal with the other views
 		sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl", "console" },
-		-- Must be one of the sections declared above
-		default_section = "watches",
-		-- Append hints with keymaps within the labels
+		default_section = "scopes",
 		show_keymap_hints = true,
-		-- List of up to 2 strings, defining left and right separators
 		separators = nil,
-		-- Configure each section individually
 		base_sections = {
-			-- Labels can be set dynamically with functions
-			-- Each function receives the window's width and the current section as arguments
 			breakpoints = { label = "Breakpoints", keymap = "B" },
-			scopes = { label = "Scopes", keymap = "S" },
-			exceptions = { label = "Exceptions", keymap = "E" },
-			watches = { label = "Watches", keymap = "W" },
-			threads = { label = "Threads", keymap = "T" },
-			repl = { label = "REPL", keymap = "R" },
-			sessions = { label = "Sessions", keymap = "K" },
-			console = { label = "Console", keymap = "C" },
+			scopes      = { label = "Scopes", keymap = "S" },
+			exceptions  = { label = "Exceptions", keymap = "E" },
+			watches     = { label = "Watches", keymap = "W" },
+			threads     = { label = "Threads", keymap = "T" },
+			repl        = { label = "REPL", keymap = "R" },
+			sessions    = { label = "Sessions", keymap = "K" },
+			console     = { label = "Console", keymap = "C" },
 		},
-		-- Add your own sections
 		custom_sections = {},
 		controls = {
 			enabled = false,
 			position = "right",
 			buttons = {
-				"play",
-				"step_into",
-				"step_over",
-				"step_out",
-				"step_back",
-				"run_last",
-				"terminate",
-				"disconnect",
+				"play", "step_into", "step_over", "step_out",
+				"step_back", "terminate",
 			},
 			custom_buttons = {},
 		},
@@ -140,37 +135,30 @@ dap_view.setup({
 		terminal = {
 			size = 0.5,
 			position = "below",
-			-- List of debug adapters for which the terminal should be ALWAYS hidden
 			hide = {},
 		},
 	},
 	icons = {
-		collapsed = "󰅂 ",
-		disabled = "",
-		disconnect = "",
-		enabled = "",
-		expanded = "󰅀 ",
-		filter = "󰈲",
-		negate = " ",
-		pause = "",
-		play = "",
-		run_last = "",
-		step_back = "",
-		step_into = "",
-		step_out = "",
-		step_over = "",
-		terminate = "",
+		collapsed  = "󰅂 ",
+		disabled   = "",
+		disconnect = "",
+		enabled    = "",
+		expanded   = "󰅀 ",
+		filter     = "󰈲",
+		negate     = " ",
+		pause      = "",
+		play       = "",
+		run_last   = "",
+		step_back  = "",
+		step_into  = "",
+		step_out   = "",
+		step_over  = "",
+		terminate  = "",
 	},
-	help = {
-		border = nil,
-	},
+	help = { border = nil },
 	render = {
-		-- Optionally a function that takes two `dap.Variable`'s as arguments
-		-- and is forwarded to a `table.sort` when rendering variables in the scopes view
 		sort_variables = nil,
-		-- Full control of how frames are rendered, see the "Custom Formatting" page
 		threads = {
-			-- Choose which items to display and how
 			format = function(name, lnum, path)
 				return {
 					{ part = name, separator = " " },
@@ -178,81 +166,40 @@ dap_view.setup({
 					{ part = lnum, hl = "LineNumber" },
 				}
 			end,
-			-- Align columns
-			align = true,
-		},
-		-- Full control of how breakpoints are rendered, see the "Custom Formatting" page
-		breakpoints = {
-			-- Choose which items to display and how
-			format = function(line, lnum, path)
-				return {
-					{ part = path, hl = "FileName" },
-					{ part = lnum, hl = "LineNumber" },
-					{ part = line, hl = true },
-				}
-			end,
-			-- Align columns
 			align = true,
 		},
 	},
-	-- Requires neovim 0.12+
 	virtual_text = {
-		-- Control with `DapViewVirtualTextToggle`
 		enabled = true,
-		-- Supported options include "inline", "eol", and "eol_right_align"
-		-- position = "inline",
 		format = function(variable, _, _)
 			return " " .. variable.value
 		end,
-		-- Prepend the variable name (when using eol positioning)
-		-- prefix = function(position, node, bufnr)
-		-- 	if position == "eol" or position == "eol_right_align" then
-		-- 		local name = vim.treesitter.get_node_text(node, bufnr)
-		--
-		-- 		return name .. " ="
-		-- 	end
-		-- end,
-		-- Add commas between variables (when using eol positioning)
-		-- suffix = function(position, _, _, var_index, num_var_line)
-		-- 	if position == "eol" or position == "eol_right_align" then
-		-- 		return var_index == num_var_line and "" or ","
-		-- 	end
-		-- end,
 	},
-	-- Controls how to jump when selecting a breakpoint or navigating the stack
-	-- Comma separated list, like the built-in 'switchbuf'. See :help 'switchbuf'
-	-- Only a subset of the options is available: newtab, useopen, usetab and uselast
-	-- Can also be a function that takes the current winnr and the destination bufnr
-	-- If a function, should return the winnr of the destination window
 	switchbuf = "usetab,uselast",
-	-- Auto open when a session is started and auto close when all sessions finish
-	-- Alternatively, can be a string:
-	-- - "keep_terminal": as above, but keeps the terminal when the session finishes
-	-- - "open_term": open the terminal when starting a new session, nothing else
-	auto_toggle = true,
-	-- Reopen dapview when switching to a different tab
-	-- Can also be a function to dynamically choose when to follow, by returning a boolean
-	-- If a function, receives the name of the adapter for the current session as an argument
+	auto_toggle = true, -- handles open/close automatically, no manual listeners needed
 	follow_tab = false,
 })
 
--- auto open when session starts, auto close when it ends
-dap.listeners.after.event_initialized["dap_view"] = function()
-	dap_view.open()
-end
-dap.listeners.before.event_terminated["dap_view"] = function()
-	dap_view.close()
-end
-dap.listeners.before.event_exited["dap_view"] = function()
-	dap_view.close()
-end
+-- ── Keymaps ───────────────────────────────────────────────────────────
+local dap_view = require("dap-view")
 
--- Optimized for Miryoku Fun Layer Home/Top rows
-vim.keymap.set("n", "<F1>", dap_view.toggle, { desc = "Debug: Toggle view" })
-vim.keymap.set("n", "<F2>", dap.toggle_breakpoint, { desc = "Debug: Toggle breakpoint" })
--- vim.keymap.set("n", "<F3>", dap.set_breakpoint(vim.fn.input("Condition: ")), { desc = "Debug: Conditional breakpoint" })
-vim.keymap.set("n", "<F4>", dap.step_out, { desc = "Debug: Step out" })
-vim.keymap.set("n", "<F5>", dap.step_into, { desc = "Debug: Step into" })
-vim.keymap.set("n", "<F6>", dap.step_over, { desc = "Debug: Step over" })
-vim.keymap.set("n", "<F7>", dap.continue, { desc = "Debug: Continue" })
-vim.keymap.set("n", "<F8>", dap.run_to_cursor, { desc = "Debug: Run to cursor" })
+vim.keymap.set({ "n", "v" }, "<F1>", dap_view.toggle, { desc = "Debug: Toggle view" })
+vim.keymap.set({ "n", "v" }, "<F2>", dap.toggle_breakpoint, { desc = "Debug: Toggle breakpoint" })
+vim.keymap.set({ "n", "v" }, "<F3>", function() require("dap.ui.widgets").hover() end, { desc = "Debug: Hover info" })
+vim.keymap.set({ "n", "v" }, "<F4>", dap.step_out, { desc = "Debug: Step out" })
+vim.keymap.set({ "n", "v" }, "<F5>", dap.step_into, { desc = "Debug: Step into" })
+vim.keymap.set({ "n", "v" }, "<F6>", dap.step_over, { desc = "Debug: Step over" })
+vim.keymap.set({ "n", "v" }, "<F7>", dap.continue, { desc = "Debug: Continue" })
+vim.keymap.set({ "n", "v" }, "<F8>", dap.run_to_cursor, { desc = "Debug: Run to cursor" })
+vim.keymap.set({ "n", "v" }, "<F9>", function() require("dap-view").add_expr() end, { desc = "Debug: Watch expression" })
+vim.keymap.set({ "n", "v" }, "<F10>", dap.terminate, { desc = "Debug: Terminate" })
+vim.keymap.set({ "n", "v" }, "<F11>", function() require("dap-view").virtual_text_toggle() end,
+	{ desc = "Debug: Toggle virtual text" })
+
+-- Close dap-float windows with 'q'
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "dap-float",
+	callback = function(ev)
+		vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = ev.buf, silent = true })
+	end,
+})
