@@ -21,8 +21,6 @@ require("blink.cmp").setup({
 		ghost_text = { enabled = false },
 		menu = {
 			draw = {
-				-- We don't need label_description now because label and label_description are already
-				-- combined together in label by colorful-menu.nvim.
 				columns = { { "kind_icon" }, { "label", gap = 1 } },
 				components = {
 					label = {
