@@ -56,6 +56,26 @@ function bind_all_modes
     bind -M visual $key $action
 end
 
+function cre
+    set example (ls examples/ | sed 's/\.rs$//' | fzf \
+        --prompt=" example: " \
+        --pointer="▶" \
+        --marker="✓" \
+        --preview="bat --color=always --style=numbers,header --theme=base16 examples/{}.rs" \
+        --preview-window="right:65%:border-left" \
+        --layout=reverse \
+        --border=rounded \
+        --border-label=" cargo run --example " \
+        --border-label-pos=3 \
+        --height=80% \
+        --margin=5%,5% \
+        --padding=1,2 \
+        --color="bg:#1c1c1c,bg+:#262626,fg:#b2b2b2,fg+:#d0d0d0,border:#444444,label:#6c6c6c,prompt:#af87af,pointer:#af87af,marker:#87af87,hl:#87af87,hl+:#afd787,header:#5f5f5f,info:#6c6c6c")
+    if test -n "$example"
+        cargo watch -q -c -x "run --example $example"
+    end
+end
+
 bind_all_modes alt-s sesh-sessions
 bind_all_modes alt-w yazi-widget
 bind_all_modes \ck up-or-search
