@@ -148,6 +148,27 @@ ins_left {
 	},
 }
 
+ins_left {
+	function()
+		local reg = vim.fn.reg_recording()
+		if reg ~= '' then
+			return ' @' .. reg
+		end
+		return ''
+	end,
+	color = { fg = colors.yellow, gui = 'bold' },
+}
+
+ins_left {
+	function()
+		if vim.v.hlsearch == 0 then return '' end
+		local ok, result = pcall(vim.fn.searchcount, { recompute = true })
+		if not ok or result.total == 0 then return '' end
+		return ('󰍉 %d/%d'):format(result.current, result.total)
+	end,
+	color = { fg = colors.cyan },
+}
+
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
 -- ins_left {
@@ -169,6 +190,12 @@ vim.api.nvim_create_autocmd('User', {
 		else
 			cc_status = status ~= '' and (' ' .. status) or ''
 		end
+		vim.cmd('redrawstatus')
+	end,
+})
+
+vim.api.nvim_create_autocmd({ 'RecordingEnter', 'RecordingLeave' }, {
+	callback = function()
 		vim.cmd('redrawstatus')
 	end,
 })

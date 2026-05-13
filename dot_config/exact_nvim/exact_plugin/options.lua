@@ -8,8 +8,8 @@ vim.o.expandtab = false
 
 -- Visuals
 vim.o.number = true
-vim.o.relativenumber = true
-vim.opt.signcolumn = "auto:3"
+vim.o.relativenumber = false
+vim.opt.signcolumn = "no"
 vim.o.cursorline = false
 vim.o.showmode = false
 vim.o.list = true
@@ -20,6 +20,7 @@ vim.opt.fillchars = { eob = " " }
 vim.opt.cursorline = false
 vim.o.winborder = "single"
 vim.opt.cmdheight = 0
+vim.opt.showcmdloc = 'statusline'
 
 -- Behavior & Search
 vim.o.mouse = "a"
