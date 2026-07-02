@@ -1,1 +1,0 @@
-echo 'Build with `devbox run build` to get BusTimes Binary'
